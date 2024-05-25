@@ -15,7 +15,7 @@ public class MapGenerator : MonoBehaviour
         CreateDungeon();
     }
 
-    // Update is called once per frame
+    //update is called once per frame
     void Update()
     {
         
@@ -24,6 +24,6 @@ public class MapGenerator : MonoBehaviour
     void CreateDungeon()
     {
         DungeonGenerator generator = new DungeonGenerator(mapLength, mapWidth);
-        //var listOfRooms = generator.CalculateRooms(maxIterations, roomWidthMin, roomLengthMin);
+        var listOfRooms = generator.CalculateRooms(maxIterations, roomWidthMin, roomLengthMin);
     }
 }

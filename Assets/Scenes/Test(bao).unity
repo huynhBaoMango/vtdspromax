@@ -223,7 +223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1703847763}
-  - component: {fileID: 1703847762}
+  - component: {fileID: 1703847764}
   m_Layer: 0
   m_Name: TEST
   m_TagString: Untagged
@@ -231,20 +231,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1703847762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703847761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e9527f9ecdb574b951a9e6f4210f66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRadius: 1
-  maxRadius: 5
 --- !u!4 &1703847763
 Transform:
   m_ObjectHideFlags: 0
@@ -260,6 +246,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1703847764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703847761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62bab63a625e8244bbc0779496a36aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapLength: 100
+  mapWidth: 100
+  roomWidthMin: 20
+  roomLengthMin: 50
+  maxIterations: 1
+  corridorWidth: 10
 --- !u!1 &2023115680
 GameObject:
   m_ObjectHideFlags: 0
