@@ -24,6 +24,6 @@ public class MapGenerator : MonoBehaviour
     void CreateDungeon()
     {
         DungeonGenerator generator = new DungeonGenerator(mapLength, mapWidth);
-        var listOfRooms = generator.CalculateRooms(maxIterations, roomWidthMin, roomLengthMin);
+        //var listOfRooms = generator.CalculateRooms(maxIterations, roomWidthMin, roomLengthMin);
     }
 }

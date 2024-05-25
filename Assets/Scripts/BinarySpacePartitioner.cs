@@ -12,23 +12,23 @@ public class BinarySpacePartitioner
         this.rootNode = new RoomNode(new Vector2Int(0, 0), new Vector2Int(mapWidth, mapLength), null, 0);
     }
 
-    public List<RoomNode> PrepareNodesCollection(int maxIterations, int roomWidthMin, int roomLengthMin)
-    {
-        Queue<RoomNode> graph = new Queue<RoomNode>();
-        List<RoomNode> listToReturn = new List<RoomNode>();
-        graph.Enqueue(this.rootNode);
-        listToReturn.Add(this.rootNode);
-        int iterations = 0;
-        while (iterations < maxIterations && graph.Count > 0)
-        {
-            iterations++;
-            RoomNode currentNode = graph.Dequeue();
-            if (currentNode.Width >= roomWidthMin * 2 || currentNode.Length >= roomLengthMin * 2)
-            {
-                SplitTheSpace(currentNode, listToReturn, roomLengthMin, roomWidthMin, graph);
-            }
-        }
-    }
+    //public List<RoomNode> PrepareNodesCollection(int maxIterations, int roomWidthMin, int roomLengthMin)
+    //{
+    //    Queue<RoomNode> graph = new Queue<RoomNode>();
+    //    List<RoomNode> listToReturn = new List<RoomNode>();
+    //    graph.Enqueue(this.rootNode);
+    //    listToReturn.Add(this.rootNode);
+    //    int iterations = 0;
+    //    while (iterations < maxIterations && graph.Count > 0)
+    //    {
+    //        iterations++;
+    //        RoomNode currentNode = graph.Dequeue();
+    //        if (currentNode.Width >= roomWidthMin * 2 || currentNode.Length >= roomLengthMin * 2)
+    //        {
+    //            SplitTheSpace(currentNode, listToReturn, roomLengthMin, roomWidthMin, graph);
+    //        }
+    //    }
+    //}
 
     private void SplitTheSpace(RoomNode currentNode, List<RoomNode> listToReturn, int roomLengthMin, int roomWidthMin, Queue<RoomNode> graph)
     {

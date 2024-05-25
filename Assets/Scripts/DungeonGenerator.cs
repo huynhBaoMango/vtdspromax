@@ -15,9 +15,9 @@ public class DungeonGenerator
         this.mapWidth = mapWidth;
     }
 
-    public List<Node> CalculateRooms(int maxIterations, int roomWidthMin, int roomLengthMin)
-    {
-        BinarySpacePartitioner bsp = new BinarySpacePartitioner(mapWidth, mapLength);
-        allSpaceNodes = bsp.PrepareNodesCollection(maxIterations, roomWidthMin, roomLengthMin);
-    }
+    //public List<Node> CalculateRooms(int maxIterations, int roomWidthMin, int roomLengthMin)
+    //{
+    //    BinarySpacePartitioner bsp = new BinarySpacePartitioner(mapWidth, mapLength);
+    //    allSpaceNodes = bsp.PrepareNodesCollection(maxIterations, roomWidthMin, roomLengthMin);
+    //}
 }
