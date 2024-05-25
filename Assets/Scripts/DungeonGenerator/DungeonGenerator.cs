@@ -19,6 +19,7 @@ public class DungeonGenerator
     {
         BinarySpacePartitioner bsp = new BinarySpacePartitioner(mapWidth, mapLength);
         allSpaceNodes = bsp.PrepareNodesCollection(maxIterations, roomWidthMin, roomLengthMin);
+        List<Node> roomSpaces = StructureHelper.TraverseGraphToExtractLowestLeafes(bsp.RootNode);
         return new List<Node>(allSpaceNodes);
     }
 }
