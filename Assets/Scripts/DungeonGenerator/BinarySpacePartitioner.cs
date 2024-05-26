@@ -112,7 +112,7 @@ public class BinarySpacePartitioner
         }
         else
         {
-            coordinates = new Vector2Int(0, Random.Range((bottomLeftAreaCorner.x + roomWidthMin), (topRightAreaCorner.x - roomWidthMin)));
+            coordinates = new Vector2Int(Random.Range((bottomLeftAreaCorner.x + roomWidthMin), (topRightAreaCorner.x - roomWidthMin)), 0);
         }
         return coordinates;
     }
