@@ -10,7 +10,10 @@ public class InputHandler : MonoBehaviour
     
     bool isShooting = false;
 
-    public GameObject muzzleFlash; // Tham chiếu đến GameObject của hiệu ứng nổ đầu súng
+    public GameObject bulletPrefab; 
+    public Transform firePoint; 
+    public GameObject muzzleFlash; 
+    public float bulletSpeed = 10f; 
 
     void Start()
     {
@@ -64,11 +67,22 @@ public class InputHandler : MonoBehaviour
     {
         isShooting = true;
         animator.SetBool("isShooting", true);
-        
+
+        // Bắn viên đạn
+        if (bulletPrefab && firePoint)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            
+            Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+            if (bulletRb)
+            {
+                bulletRb.velocity = firePoint.forward * bulletSpeed; 
+            }
+        }
+
         // Bật hiệu ứng nổ đầu súng
         if (muzzleFlash)
         {
-            Debug.Log("Muzzle flash activated.");
             muzzleFlash.SetActive(true);
         }
     }
@@ -81,7 +95,6 @@ public class InputHandler : MonoBehaviour
         // Tắt hiệu ứng nổ đầu súng
         if (muzzleFlash)
         {
-            Debug.Log("Muzzle flash deactivated.");
             muzzleFlash.SetActive(false);
         }
     }
