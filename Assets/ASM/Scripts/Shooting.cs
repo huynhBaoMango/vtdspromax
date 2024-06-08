@@ -51,6 +51,7 @@ public class Shooting : MonoBehaviour
         for (int i = 1; i <= pmanager.fireRate; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<bulletInfo>().damage = pmanager.damage;
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
             muzzleFlash.SetActive(true);
 
