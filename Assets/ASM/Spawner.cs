@@ -14,7 +14,8 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("PLAYER");
-        countdownToWave = 60;
+        countdownToWave = 60f;
+        timeToSpawn = 3f;
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class Spawner : MonoBehaviour
                 timeToSpawn = 3f;
             }
         }
-        else
+        else if(countdownToWave <= 0)
         {
             Debug.Log("IN WAVE");
             timeToSpawn -= 1 * Time.deltaTime;
