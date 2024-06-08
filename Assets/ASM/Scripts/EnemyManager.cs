@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     public int experiencePoints = 50;
     public int damage = 20;
     public float speed = 3f;
-    private int currentHP;
+    public float currentHP;
     private AnimationsController animationsController;
 
     void Start()
@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     // Hàm này sẽ gọi khi enemy nhận sát thương
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         currentHP -= amount;
         if (currentHP <= 0)
@@ -43,21 +43,5 @@ public class EnemyManager : MonoBehaviour
             player.EnemyDefeated(this);
         }
         Destroy(gameObject);
-    }
-
-    // Hàm này có thể gọi để gây sát thương lên người chơi
-    public void AttackPlayer(Player player)
-    {
-        player.TakeDamage(damage);
-    }
-
-    // Hàm để xác định khi nào enemy tấn công người chơi (ví dụ, khi vào vùng va chạm)
-    void OnCollisionEnter(Collision collision)
-    {
-        Player player = collision.gameObject.GetComponent<Player>();
-        if (player != null)
-        {
-            AttackPlayer(player);
-        }
     }
 }
