@@ -33,7 +33,7 @@ public class TopdownCharacter : MonoBehaviour
         {
             RotateTowardsMouseVector();
         }
-        camera.transform.position= new Vector3(transform.position.x, transform.position.y + 8, transform.position.z-4);
+        camera.transform.position= new Vector3(transform.position.x, transform.position.y + 18, transform.position.z-10);
     }
 
     private void RotateTowardMovementVector(Vector3 movementVector)
