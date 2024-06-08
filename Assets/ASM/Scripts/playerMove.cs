@@ -6,7 +6,8 @@ public class playerMove : MonoBehaviour
     Vector3 lookPos;
     Rigidbody rb;
     Animator anim;
-    public float speed = 4;
+    public float speed;
+    private PlayerManager pmanager;
 
     Transform cam;
     Vector3 camForward;
@@ -22,9 +23,11 @@ public class playerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         cam = Camera.main.transform;
+        pmanager = GetComponent<PlayerManager>();
     }
     private void Update()
     {
+        speed = pmanager.speed;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, 100))
