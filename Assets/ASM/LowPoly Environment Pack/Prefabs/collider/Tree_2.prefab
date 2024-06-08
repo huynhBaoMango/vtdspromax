@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4905684144481780}
-  - component: {fileID: 5220070753983501133}
+  - component: {fileID: -6667414840773132176}
   m_Layer: 0
   m_Name: Tree_2
   m_TagString: Untagged
@@ -117,7 +117,7 @@ Transform:
   - {fileID: 4920880156530424}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &5220070753983501133
+--- !u!64 &-6667414840773132176
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

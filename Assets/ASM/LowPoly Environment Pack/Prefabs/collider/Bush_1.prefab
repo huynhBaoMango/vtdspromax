@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4112504727747986}
   - component: {fileID: 33761035236259898}
   - component: {fileID: 23718810566272436}
-  - component: {fileID: 6833437943388437060}
+  - component: {fileID: -3962283962843279858}
   m_Layer: 0
   m_Name: Bush_1
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6833437943388437060
+--- !u!64 &-3962283962843279858
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
