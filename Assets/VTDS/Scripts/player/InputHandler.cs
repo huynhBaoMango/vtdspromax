@@ -5,23 +5,26 @@ public class InputHandler : MonoBehaviour
     public Vector2 InputVector { get; private set; }
     public Vector3 MousePosition { get; private set; }
     
-    public GameObject shootingEffectPrefab; // Tham chiếu đến prefab hiệu ứng bắn đạn
+    Animator animator;
+    Rigidbody rb;
     
-    private Animator animator;
-    private Rigidbody rb;
-    private bool isShooting = false;
-    private GameObject shootingEffectInstance; // Instance của hiệu ứng bắn đạn
+    bool isShooting = false;
+
+    public GameObject muzzleFlash; // Tham chiếu đến GameObject của hiệu ứng nổ đầu súng
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
-        // Đảm bảo hiệu ứng bắn đạn không hoạt động khi bắt đầu game
-        if (shootingEffectPrefab != null)
+        // Đảm bảo hiệu ứng nổ đầu súng tắt khi bắt đầu game
+        if (muzzleFlash)
         {
-            shootingEffectInstance = Instantiate(shootingEffectPrefab);
-            shootingEffectInstance.SetActive(false);
+            muzzleFlash.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("Muzzle flash GameObject is not assigned.");
         }
     }
 
@@ -44,7 +47,7 @@ public class InputHandler : MonoBehaviour
             state = 2; 
         }
 
-        // Thiết lập tham số "move" trong Animator
+        // Thiết lập tham số move trong Animator
         animator.SetInteger("move", state);
 
         if (Input.GetMouseButtonDown(0)) 
@@ -61,11 +64,12 @@ public class InputHandler : MonoBehaviour
     {
         isShooting = true;
         animator.SetBool("isShooting", true);
-
-        // Kích hoạt hiệu ứng bắn đạn
-        if (shootingEffectInstance != null)
+        
+        // Bật hiệu ứng nổ đầu súng
+        if (muzzleFlash)
         {
-            shootingEffectInstance.SetActive(true);
+            Debug.Log("Muzzle flash activated.");
+            muzzleFlash.SetActive(true);
         }
     }
 
@@ -74,10 +78,11 @@ public class InputHandler : MonoBehaviour
         isShooting = false;
         animator.SetBool("isShooting", false);
 
-        // Tắt hiệu ứng bắn đạn
-        if (shootingEffectInstance != null)
+        // Tắt hiệu ứng nổ đầu súng
+        if (muzzleFlash)
         {
-            shootingEffectInstance.SetActive(false);
+            Debug.Log("Muzzle flash deactivated.");
+            muzzleFlash.SetActive(false);
         }
     }
 }
