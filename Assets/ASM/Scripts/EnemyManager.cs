@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -23,13 +21,14 @@ public class EnemyManager : MonoBehaviour
     public void TakeDamage(float amount)
     {
         currentHP -= amount;
+        Debug.Log("Enemy took " + amount + " damage. Current health: " + currentHP); // Debug để kiểm tra sát thương và máu còn lại của Enemy
         if (currentHP <= 0)
         {
             Die();
         }
         else
         {
-            animationsController.Hit();
+            animationsController.Hit(); // Phát animation khi Enemy nhận sát thương
         }
     }
 
@@ -40,8 +39,8 @@ public class EnemyManager : MonoBehaviour
         Player player = FindObjectOfType<Player>();
         if (player != null)
         {
-            player.EnemyDefeated(this);
+            player.EnemyDefeated(this); // Gửi thông tin Enemy cho Player để xử lý khi Enemy chết
         }
-        Destroy(gameObject);
+        Destroy(gameObject); // Hủy GameObject của Enemy khi chết
     }
 }

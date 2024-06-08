@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-/* THIS CODE IS JUST FOR PREVIEW AND TESTING */
-// Feel free to use any code and picking on it, I cannot guaratnee it will fit into your project
 public class ECExplodingProjectile : MonoBehaviour
 {
-    public GameObject impactPrefab;
-    public GameObject explosionPrefab;
-    public float thrust;
+    public GameObject impactPrefab; // Prefab hiệu ứng khi va chạm
+    public GameObject explosionPrefab; // Prefab hiệu ứng nổ
+    public float thrust; // Lực đẩy của viên đạn
+    public int damage; // Số lượng sát thương của viên đạn
+    public float critDamageMultiplier = 1.3f; // Hệ số sát thương crit
+
+    private PlayerManager playerManager; // Tham chiếu đến PlayerManager
 
     public Rigidbody thisRigidbody;
 
@@ -28,9 +29,9 @@ public class ECExplodingProjectile : MonoBehaviour
 
     private Vector3 previousPosition;
 
-    // Use this for initialization
     void Start()
     {
+        playerManager = FindObjectOfType<PlayerManager>();
         thisRigidbody = GetComponent<Rigidbody>();
         if (Missile)
         {
@@ -40,19 +41,13 @@ public class ECExplodingProjectile : MonoBehaviour
         previousPosition = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        /*     if(Input.GetButtonUp("Fire2"))
-             {
-                 Explode();
-             }*/
         timer += Time.deltaTime;
         if (timer >= explosionTimer && explodeOnTimer == true)
         {
             Explode();
         }
-
     }
 
     void FixedUpdate()
@@ -60,10 +55,7 @@ public class ECExplodingProjectile : MonoBehaviour
         if (Missile)
         {
             projectileSpeed += projectileSpeed * projectileSpeedMultiplier;
-            //   transform.position = Vector3.MoveTowards(transform.position, missileTarget.transform.position, 0);
-
             transform.LookAt(missileTarget);
-
             thisRigidbody.AddForce(transform.forward * projectileSpeed);
         }
 
@@ -88,7 +80,23 @@ public class ECExplodingProjectile : MonoBehaviour
             transform.position = hit.point;
             Quaternion rot = Quaternion.FromToRotation(Vector3.forward, hit.normal);
             Vector3 pos = hit.point;
-            Instantiate(impactPrefab, pos, rot);
+
+            GameObject bullet = Instantiate(impactPrefab, pos, rot); // Tạo hiệu ứng va chạm
+            bullet.tag = "bullet";
+
+            if (hit.collider.CompareTag("Enemy"))
+        {
+            // Lấy sát thương và tỷ lệ crit từ PlayerManager
+            int baseDamage = playerManager.damage;
+            float critRate = playerManager.critRate;
+            float critDamage = playerManager.critDamage;
+
+            // Tính toán sát thương cơ bản và crit
+            int finalDamage = CalculateDamage(baseDamage, critRate, critDamage);
+            hit.collider.GetComponent<EnemyManager>().TakeDamage(finalDamage);
+        }
+        
+
             if (!explodeOnTimer && Missile == false)
             {
                 Destroy(gameObject);
@@ -100,7 +108,6 @@ public class ECExplodingProjectile : MonoBehaviour
                 thisRigidbody.velocity = Vector3.zero;
                 Destroy(gameObject, 5);
             }
-
         }
     }
 
@@ -122,13 +129,10 @@ public class ECExplodingProjectile : MonoBehaviour
             }
             else if (Missile == true)
             {
-
                 thisCollider.enabled = false;
                 particleKillGroup.SetActive(false);
                 thisRigidbody.velocity = Vector3.zero;
-
                 Destroy(gameObject, 5);
-
             }
         }
     }
@@ -138,5 +142,14 @@ public class ECExplodingProjectile : MonoBehaviour
         Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
     }
+    int CalculateDamage(int baseDamage, float critRate, float critDamage)
+    {
+        // Kiểm tra xem crit có xảy ra không
+        bool isCrit = Random.value <= critRate;
+        
+        // Tính toán sát thương dựa trên việc có crit hay không
+        int finalDamage = isCrit ? Mathf.RoundToInt(baseDamage * critDamageMultiplier) : baseDamage;
 
+        return finalDamage;
+    }
 }
