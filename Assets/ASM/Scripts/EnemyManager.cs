@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     // Các thuộc tính của enemy
     public int maxHP = 100;
-    private int currentHP;
     public int experiencePoints = 50;
     public int damage = 20;
+    public float speed = 3f;
+    private int currentHP;
+    private AnimationsController animationsController;
 
     void Start()
     {
         // Thiết lập máu hiện tại bằng máu tối đa khi bắt đầu
         currentHP = maxHP;
+        animationsController = GetComponent<AnimationsController>();
     }
 
     // Hàm này sẽ gọi khi enemy nhận sát thương
@@ -26,7 +29,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("Enemy took " + amount + " damage. Current HP: " + currentHP);
+            animationsController.Hit();
         }
     }
 

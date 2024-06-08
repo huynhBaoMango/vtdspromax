@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
     }
 
     // Gọi hàm này khi enemy chết để thêm XP cho người chơi
-    public void EnemyDefeated(Enemy enemy)
+    public void EnemyDefeated(EnemyManager enemy)
     {
         GainExperience(enemy.experiencePoints);
     }
@@ -217,7 +217,7 @@ public class Player : MonoBehaviour
     void Attack()
     {
         // Giả sử chỉ có một enemy cần tấn công
-        Enemy enemy = FindObjectOfType<Enemy>();
+        EnemyManager enemy = FindObjectOfType<EnemyManager>();
         if (enemy != null)
         {
             int damageDealt = CalculateDamage();
