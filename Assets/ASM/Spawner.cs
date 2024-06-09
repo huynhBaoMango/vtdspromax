@@ -25,39 +25,25 @@ public class Spawner : MonoBehaviour
         {
             return;
         }
+        countdownToWave -= 1 * Time.deltaTime;
         if (countdownToWave > 0)
         {
-            countdownToWave -= 1 * Time.deltaTime;
-            timeToSpawn -= 1 * Time.deltaTime;
-            if (timeToSpawn <= 0)
-            {
-                for (int i = 1; i <= wave; i++)
-                {
-                    Vector3 randomSpawnNearPlayer = new Vector3(Random.Range(player.transform.position.x - SpawnOffset, player.transform.position.x + SpawnOffset), 1, Random.Range(player.transform.position.z - SpawnOffset, player.transform.position.z + SpawnOffset));
-                    var enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], randomSpawnNearPlayer, Quaternion.identity);
-                    enemy.transform.parent = enemies.transform;
-
-                }
-                timeToSpawn = 3f;
-            }
+            normalSpawn();
         }
-        else if(countdownToWave <= 0)
+        else
         {
-            Debug.Log("IN WAVE");
-            timeToSpawn -= 1 * Time.deltaTime;
-            if(enemies.transform.childCount <= wave * 10 && enemies.transform.childCount <= 500)
-            {
-                for (int i = 0; i <= wave; i++)
-                {
-                    Vector3 randomSpawnNearPlayer = new Vector3(Random.Range(player.transform.position.x - SpawnOffset, player.transform.position.x + SpawnOffset), 1, Random.Range(player.transform.position.z - SpawnOffset, player.transform.position.z + SpawnOffset));
-                    var enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], randomSpawnNearPlayer, Quaternion.identity);
-                    enemy.transform.parent = enemies.transform;
-
-
-                }
-            }
-            timeToSpawn = 3f;
+            waveSpawn();
         }
-        
+    }
+
+
+    void normalSpawn()
+    {
+
+    }
+
+    void waveSpawn()
+    {
+
     }
 }

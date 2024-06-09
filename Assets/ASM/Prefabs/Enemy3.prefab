@@ -1185,9 +1185,9 @@ GameObject:
   - component: {fileID: 7978624207803025015}
   - component: {fileID: 52657568567217627}
   - component: {fileID: -6267718887509902584}
-  - component: {fileID: 6800190406981791411}
   - component: {fileID: 77800851220456648}
   - component: {fileID: 9024828710180843639}
+  - component: {fileID: 2315875397006933333}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: Enemy
@@ -1205,7 +1205,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7978624207812061653}
@@ -1228,6 +1228,7 @@ MonoBehaviour:
   experiencePoints: 50
   damage: 20
   speed: 3
+  currentHP: 0
 --- !u!95 &7978624207803025015
 Animator:
   serializedVersion: 5
@@ -1285,19 +1286,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6800190406981791411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978624207812556279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e34cbada848664b841a8008b7e63e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!65 &77800851220456648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1317,8 +1305,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.079367, y: 2.753151, z: 2.9408705}
-  m_Center: {x: 0.076236606, y: 0.87657523, z: 0.41314375}
+  m_Size: {x: 2.8070574, y: 4.9613853, z: 2.9408705}
+  m_Center: {x: 0.031266928, y: 2.463094, z: 0.41314375}
 --- !u!114 &9024828710180843639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1332,3 +1320,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+--- !u!114 &2315875397006933333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7978624207812556279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb65f491fcce1f4da24b8cb5b4338ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  isDeadBool: 0

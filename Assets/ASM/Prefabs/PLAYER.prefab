@@ -192,13 +192,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  speed: 5
+  speed: 3
   damage: 10
   critRate: 0.1
   critDamage: 1.3
   reloadSpeed: 4
   maxBullet: 30
-  fireReset: 2
+  fireReset: 4
   fireRate: 1
 --- !u!54 &266245208784122730
 Rigidbody:

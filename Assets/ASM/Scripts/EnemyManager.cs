@@ -9,12 +9,13 @@ public class EnemyManager : MonoBehaviour
     public float speed = 3f;
     public float currentHP;
     private AnimationsController animationsController;
+    private enemyMove emove;
 
     void Start()
     {
-        // Thiết lập máu hiện tại bằng máu tối đa khi bắt đầu
         currentHP = maxHP;
         animationsController = GetComponent<AnimationsController>();
+        emove = GetComponent<enemyMove>();
     }
 
     // Hàm này sẽ gọi khi enemy nhận sát thương
@@ -32,15 +33,15 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    // Hàm này sẽ gọi khi enemy chết
     void Die()
     {
-        // Thêm logic cho cái chết của enemy (vd: phát animation, thêm XP cho người chơi, etc.)
+        emove.isDead();
         Player player = FindObjectOfType<Player>();
         if (player != null)
         {
-            player.EnemyDefeated(this); // Gửi thông tin Enemy cho Player để xử lý khi Enemy chết
+            player.EnemyDefeated(this);
         }
-        Destroy(gameObject); // Hủy GameObject của Enemy khi chết
+        animationsController.SetDead();
+        Destroy(gameObject, 2f);
     }
 }
