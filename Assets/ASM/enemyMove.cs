@@ -7,12 +7,14 @@ public class enemyMove : MonoBehaviour
 {
     public GameObject player;
     private NavMeshAgent agent;
+    private EnemyManager emanager;
     public bool isDeadBool;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("PLAYER");
+        emanager = GetComponent<EnemyManager>();
         isDeadBool = false;
     }
 
@@ -20,7 +22,7 @@ public class enemyMove : MonoBehaviour
     void Update()
     {
         if(isDeadBool) return;
-        if (Vector3.Distance(transform.position, player.transform.position) > 3f)
+        if (Vector3.Distance(transform.position, player.transform.position) > emanager.attackRange)
         {
             agent.isStopped = false;
             agent.SetDestination(player.transform.position);

@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
     public int experiencePoints = 50;
     public int damage = 20;
     public float speed = 3f;
+    public float attackRange = 3f;
     public float currentHP;
     private AnimationsController animationsController;
     private enemyMove emove;
