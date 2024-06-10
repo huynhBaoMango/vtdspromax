@@ -211,6 +211,8 @@ MonoBehaviour:
   impactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   explosionPrefab: {fileID: 0}
   thrust: 0
+  damage: 0
+  critDamageMultiplier: 1.3
   thisRigidbody: {fileID: 54453457801900860}
   particleKillGroup: {fileID: 0}
   LookRotation: 1
@@ -3881,7 +3883,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 0
     collisionMode: 0

@@ -37,10 +37,7 @@ public class Shooting : MonoBehaviour
         fireReset -= 1 * Time.deltaTime;
         if (bulletPrefab && firePoint && fireReset <= 0)
         {
-            for (int i = 1; i <= pmanager.fireRate; i++)
-            {
-                StartCoroutine(ShootBullets());
-            }
+            StartCoroutine(ShootBullets());
             fireReset = pmanager.fireReset;
         }
 
@@ -48,7 +45,7 @@ public class Shooting : MonoBehaviour
 
     IEnumerator ShootBullets()
     {
-        for (int i = 1; i <= pmanager.fireRate; i++)
+        for (int i = 0; i < pmanager.fireRate; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.GetComponent<bulletInfo>().damage = pmanager.damage;
