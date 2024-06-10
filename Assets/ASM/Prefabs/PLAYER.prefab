@@ -24,44 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5663129364397044939}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3201778, y: -0.6252439, z: 0.20027544, w: 0.68296856}
-  m_LocalPosition: {x: -81.9, y: -88.3, z: -2.8}
+  m_LocalRotation: {x: 0.6604927, y: -0.2524863, z: 0.65648574, w: 0.26272896}
+  m_LocalPosition: {x: -57.798176, y: -113.83163, z: -9.490613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1844647657041751441}
-  m_LocalEulerAnglesHint: {x: 43.455, y: -88.965, z: -10.061}
---- !u!1 &7162433310494852900
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6438473433093909493}
-  m_Layer: 0
-  m_Name: firePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6438473433093909493
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7162433310494852900}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.3201778, y: -0.6252439, z: 0.20027544, w: 0.68296856}
-  m_LocalPosition: {x: -81.9, y: -88.3, z: -2.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1844647657041751441}
-  m_LocalEulerAnglesHint: {x: 43.455, y: -88.965, z: -10.061}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1844647657041884955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,12 +148,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 400010, guid: 860793eb3324391468f1c120a75ec049, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 6438473433093909493}
-    - targetCorrespondingSourceObject: {fileID: 400010, guid: 860793eb3324391468f1c120a75ec049, type: 3}
-      insertIndex: 1
       addedObject: {fileID: 3847416616988816060}
     - targetCorrespondingSourceObject: {fileID: 400010, guid: 860793eb3324391468f1c120a75ec049, type: 3}
-      insertIndex: 2
+      insertIndex: 1
       addedObject: {fileID: 8012502052824467660}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100066, guid: 860793eb3324391468f1c120a75ec049, type: 3}
@@ -230,7 +196,6 @@ MonoBehaviour:
   damage: 10
   critRate: 0.1
   critDamage: 1.3
-  reloadSpeed: 4
   maxBulletCount: 30
   currentBulletCount: 30
   fireReset: 4

@@ -3,15 +3,14 @@
 
     public class PlayerManager : MonoBehaviour
     {
-        public int maxHP = 100;
+        public float maxHP = 100;
         public float speed = 5f;
-        public int damage = 10;
+        public float damage = 10;
         public float critRate = 0.1f; // Tỷ lệ chí mạng, giá trị từ 0 đến 1
         public float critDamage = 1.3f; // Sát thương chí mạng, ví dụ: 2.0f tức là gấp đôi sát thương thường
-        public float reloadSpeed = 4f;
         public int maxBulletCount = 30; 
         public int currentBulletCount = 30; 
-        public float fireReset = 2f;
+        public float fireReset = 4f;
         public float fireRate = 1f;
 
         // Dictionary để theo dõi số lần mỗi buff được chọn
@@ -22,14 +21,13 @@
             { "Speed", 0 },
             { "CritRate", 0 },
             { "CritDamage", 0 },
-            { "reloadSpeed", 0 },
-             { "MaxBulletCount", 0 },
+            { "MaxBulletCount", 0 },
             { "fireReset", 0 },
             { "fireRate", 0 },
         };
 
         // Hàm để tăng các chỉ số
-        public void IncreaseHP(int amount)
+        public void IncreaseHP(float amount)
         {
             maxHP += amount;
         }
@@ -39,7 +37,7 @@
             speed += amount;
         }
 
-        public void IncreaseDamage(int amount)
+        public void IncreaseDamage(float amount)
         {
             damage += amount;
         }
@@ -52,11 +50,6 @@
         public void IncreaseCritDamage(float amount)
         {
             critDamage += amount;
-        }
-
-        public void IncreaseReloadSpeed(float amount)
-        {
-            reloadSpeed -= amount;
         }
 
         public void IncreaseMaxBulletCount(int amount)

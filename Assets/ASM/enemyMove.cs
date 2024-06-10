@@ -16,6 +16,7 @@ public class enemyMove : MonoBehaviour
         player = GameObject.Find("PLAYER");
         emanager = GetComponent<EnemyManager>();
         isDeadBool = false;
+        agent.speed = emanager.speed;
     }
 
     // Update is called once per frame

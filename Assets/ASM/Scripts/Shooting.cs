@@ -21,6 +21,7 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         pmanager = GetComponent<PlayerManager>();
+        reloadSlider.gameObject.SetActive(false);
         fireReset = pmanager.fireReset;
         if (muzzleFlash)
         {
@@ -78,27 +79,26 @@ public class Shooting : MonoBehaviour
     }
 
     IEnumerator ReloadBullets()
-{
-    
-    gunImage.color = new Color(1f, 1f, 1f, 1f); 
-    reloadSlider.gameObject.SetActive(true); 
-
-    float reloadTime = pmanager.reloadSpeed;
-    while (reloadTime > 0)
     {
-        reloadTime -= Time.deltaTime;
-        reloadSlider.value = 1 - (reloadTime / pmanager.reloadSpeed);
-        yield return null;
-    }
+        gunImage.color = new Color(1f, 1f, 1f, 1f); 
+        reloadSlider.gameObject.SetActive(true); 
+
+        float reloadTime = pmanager.fireReset;
+        while (reloadTime > 0)
+        {
+            reloadTime -= Time.deltaTime;
+            reloadSlider.value = 1 - (reloadTime / pmanager.fireReset);
+            yield return null;
+        }
 
    
-    pmanager.currentBulletCount = pmanager.maxBulletCount;
-    UpdateBulletCountText();
-    gunImage.color = Color.white; 
-    reloadSlider.gameObject.SetActive(false); 
+        pmanager.currentBulletCount = pmanager.maxBulletCount;
+        UpdateBulletCountText();
+        gunImage.color = Color.white; 
+        reloadSlider.gameObject.SetActive(false); 
 
-    reloadingCoroutine = null;
-}
+        reloadingCoroutine = null;
+    }
 
 
     void UpdateBulletCountText()

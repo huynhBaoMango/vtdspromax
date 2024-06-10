@@ -3,17 +3,19 @@
 public class EnemyManager : MonoBehaviour
 {
     // Các thuộc tính của enemy
-    public int maxHP = 100;
+    public float maxHP = 100;
     public int experiencePoints = 50;
-    public int damage = 20;
+    public float damage = 20;
     public float speed = 3f;
     public float attackRange = 3f;
     public float currentHP;
     private AnimationsController animationsController;
     private enemyMove emove;
+    private bool isDie;
 
     void Start()
     {
+        isDie = false;  
         currentHP = maxHP;
         animationsController = GetComponent<AnimationsController>();
         emove = GetComponent<enemyMove>();
@@ -37,10 +39,11 @@ public class EnemyManager : MonoBehaviour
     void Die()
     {
         emove.isDead();
-        Player player = FindObjectOfType<Player>();
-        if (player != null)
+        levelManager player = FindObjectOfType<levelManager>();
+        if (player != null && !isDie)
         {
             player.EnemyDefeated(this);
+            isDie = true;
         }
         animationsController.SetDead();
         Destroy(gameObject, 2f);

@@ -87,12 +87,12 @@ public class ECExplodingProjectile : MonoBehaviour
             if (hit.collider.CompareTag("Enemy"))
         {
             // Lấy sát thương và tỷ lệ crit từ PlayerManager
-            int baseDamage = playerManager.damage;
+            float baseDamage = playerManager.damage;
             float critRate = playerManager.critRate;
             float critDamage = playerManager.critDamage;
 
             // Tính toán sát thương cơ bản và crit
-            int finalDamage = CalculateDamage(baseDamage, critRate, critDamage);
+            float finalDamage = CalculateDamage(baseDamage, critRate, critDamage);
             hit.collider.GetComponent<EnemyManager>().TakeDamage(finalDamage);
         }
         
@@ -142,13 +142,13 @@ public class ECExplodingProjectile : MonoBehaviour
         Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
     }
-    int CalculateDamage(int baseDamage, float critRate, float critDamage)
+    float CalculateDamage(float baseDamage, float critRate, float critDamage)
     {
         // Kiểm tra xem crit có xảy ra không
         bool isCrit = Random.value <= critRate;
         
         // Tính toán sát thương dựa trên việc có crit hay không
-        int finalDamage = isCrit ? Mathf.RoundToInt(baseDamage * critDamageMultiplier) : baseDamage;
+        float finalDamage = isCrit ? Mathf.RoundToInt(baseDamage * critDamageMultiplier) : baseDamage;
 
         return finalDamage;
     }
