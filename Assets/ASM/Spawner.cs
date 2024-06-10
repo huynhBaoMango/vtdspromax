@@ -81,11 +81,13 @@ public class Spawner : MonoBehaviour
                 int randomPrefab = Random.Range(0, wave-1);
                 if (wave-1 < enemyPrefabs.Count)
                 {
-                    Instantiate(enemyPrefabs[randomPrefab], randomPosition, Quaternion.identity);
+                    GameObject enemy = Instantiate(enemyPrefabs[randomPrefab], randomPosition, Quaternion.identity);
+                    enemy.transform.parent = enemies.transform;
                 }
                 else
                 {
-                    Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], randomPosition, Quaternion.identity);
+                    GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], randomPosition, Quaternion.identity);
+                    enemy.transform.parent = enemies.transform;
                 }
                 break;
             }
