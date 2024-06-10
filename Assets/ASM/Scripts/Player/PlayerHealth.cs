@@ -10,10 +10,11 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        pmanager = GetComponent<PlayerManager>();
+        maxHealth = pmanager.maxHP;
         currentHealth = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
-        pmanager.maxHP = maxHealth;
     }
 
 
