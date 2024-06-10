@@ -9,6 +9,7 @@ public class enemyMove : MonoBehaviour
     private NavMeshAgent agent;
     private EnemyManager emanager;
     public bool isDeadBool;
+    private float delayStateChange;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,20 +18,27 @@ public class enemyMove : MonoBehaviour
         emanager = GetComponent<EnemyManager>();
         isDeadBool = false;
         agent.speed = emanager.speed;
+        delayStateChange = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
         if(isDeadBool) return;
+        transform.LookAt(player.transform.position);
         if (Vector3.Distance(transform.position, player.transform.position) > emanager.attackRange)
         {
-            agent.isStopped = false;
-            agent.SetDestination(player.transform.position);
+            delayStateChange -= 1 * Time.deltaTime;
+            if (delayStateChange <= 0)
+            {
+                agent.isStopped = false;
+                agent.SetDestination(player.transform.position);
+            }
         }
         else
         {
             agent.isStopped = true;
+            delayStateChange = 1f;
         }
     }
 

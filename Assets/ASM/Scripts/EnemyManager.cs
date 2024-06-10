@@ -3,11 +3,11 @@
 public class EnemyManager : MonoBehaviour
 {
     // Các thuộc tính của enemy
-    public float maxHP = 100;
-    public int experiencePoints = 50;
-    public float damage = 20;
-    public float speed = 3f;
-    public float attackRange = 3f;
+    public float maxHP;
+    public int experiencePoints;
+    public float damage;
+    public float speed;
+    public float attackRange;
     public float currentHP;
     private AnimationsController animationsController;
     private enemyMove emove;

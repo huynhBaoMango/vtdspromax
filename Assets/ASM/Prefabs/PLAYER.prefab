@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5663129364397044939}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6604927, y: -0.2524863, z: 0.65648574, w: 0.26272896}
+  m_LocalRotation: {x: 0.47771433, y: -0.5213339, z: 0.030843582, w: 0.70643383}
   m_LocalPosition: {x: -57.798176, y: -113.83163, z: -9.490613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1844647657041751441}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -90, z: -40}
 --- !u!1001 &1844647657041884955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,7 +167,13 @@ PrefabInstance:
       addedObject: {fileID: 4255881643219551498}
     - targetCorrespondingSourceObject: {fileID: 100066, guid: 860793eb3324391468f1c120a75ec049, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 3613555086213856306}
+    - targetCorrespondingSourceObject: {fileID: 100066, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 5965175577872754496}
+    - targetCorrespondingSourceObject: {fileID: 100066, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3900393390569541400}
   m_SourcePrefab: {fileID: 100100000, guid: 860793eb3324391468f1c120a75ec049, type: 3}
 --- !u!4 &1844647657041751441 stripped
 Transform:
@@ -253,6 +259,21 @@ MonoBehaviour:
   bulletCountText: {fileID: 0}
   gunImage: {fileID: 0}
   reloadSlider: {fileID: 0}
+--- !u!114 &3613555086213856306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844647657041916409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381aad530812db84ab3a044641d4e339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthSlider: {fileID: 0}
 --- !u!54 &5965175577872754496
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -280,6 +301,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &3900393390569541400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844647657041916409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbde30dca99e4547969d2eccaf9b7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xpSlider: {fileID: 0}
+  maxXP: 100
+  levelText: {fileID: 0}
+  buffText: {fileID: 0}
+  levelUpPanel: {fileID: 0}
+  buffNameTMPs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  buffDescriptionTMPs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  selectButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &8015676599086605528
 PrefabInstance:
   m_ObjectHideFlags: 0
