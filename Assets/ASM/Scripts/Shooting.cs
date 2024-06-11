@@ -33,7 +33,6 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         StartShooting();
-        UpdateBulletCountText();
 
     }
 
