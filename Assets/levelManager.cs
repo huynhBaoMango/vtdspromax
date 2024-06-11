@@ -126,7 +126,7 @@ public class levelManager : MonoBehaviour
             case "fireReset":
                 return "Tăng tốc độ nạp đạn thêm 10%.";
             case "MaxBulletCount":
-                return "Tăng thêm 10 viên đạn mỗi băng.";
+                return "Tăng thêm 5 viên đạn mỗi băng.";
             case "fireRate":
                 return "Tăng liên xạ thêm 1.";
             case "reloadSpeed":
@@ -168,8 +168,8 @@ public class levelManager : MonoBehaviour
             case "fireRate":
                 playerManager.IncreaseFireRate(1);
                 break;
-            case "maxBulletCount":
-                playerManager.IncreaseMaxBulletCount(10);
+            case "MaxBulletCount":
+                playerManager.IncreaseMaxBulletCount(5);
                 break;
             case "reloadSpeed":
                 playerManager.IncreaseReloadSpeed(playerManager.reloadSpeed*0.1f);
