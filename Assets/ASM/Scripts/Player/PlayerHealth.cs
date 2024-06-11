@@ -24,6 +24,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        maxHealth = pmanager.maxHP;
+    }
+
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;

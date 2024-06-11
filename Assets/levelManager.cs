@@ -128,7 +128,7 @@ public class levelManager : MonoBehaviour
             case "MaxBulletCount":
                 return "Tăng thêm 10 viên đạn mỗi băng.";
             case "fireRate":
-                return "Tăng liên xạ thêm 1.";
+                return "Tăng liên xạ thêm 1, giảm 30% damage";
             case "reloadSpeed":
                     return "Tăng tốc độ nạp đạn 10%";
             default:

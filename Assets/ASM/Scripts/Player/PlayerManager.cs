@@ -78,6 +78,7 @@
         public void IncreaseFireRate(int amount)
         {
             fireRate += amount;
+            damage -= damage / 3;
         }
     public void IncreaseReloadSpeed(float amount)
     {
