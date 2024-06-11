@@ -13,6 +13,7 @@ public class levelManager : MonoBehaviour
     public Slider xpSlider;
     public int maxXP = 1000;
     public TMP_Text levelText;
+    public TMP_Text buffText;
     public GameObject levelUpPanel;
 
     public TMP_Text[] buffNameTMPs = new TMP_Text[3];
@@ -30,6 +31,7 @@ public class levelManager : MonoBehaviour
         xpSlider.value = experience;
         UpdateLevelText();
         levelUpPanel.SetActive(false);
+        buffText.gameObject.SetActive(false);
     }
 
     public void GainExperience(int amount)
@@ -183,6 +185,8 @@ public class levelManager : MonoBehaviour
         // Ẩn Panel và tiếp tục game
         levelUpPanel.SetActive(false);
         Time.timeScale = 1f;
+        buffText.text = "Attribute increased: " + selectedAttribute;
+        buffText.gameObject.SetActive(true); // Hiển thị buffText
         Debug.Log("Attribute increased: " + selectedAttribute);
         StartCoroutine(HideBuffTextAfterDelay(3f)); // Ẩn buffText sau 3 giây
     }
@@ -190,6 +194,7 @@ public class levelManager : MonoBehaviour
     IEnumerator HideBuffTextAfterDelay(float delay)
     {
         yield return new WaitForSecondsRealtime(delay);
+        buffText.gameObject.SetActive(false);
     }
 
     public void EnemyDefeated(EnemyManager enemy)
