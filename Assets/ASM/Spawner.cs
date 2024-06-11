@@ -22,13 +22,15 @@ public class Spawner : MonoBehaviour
 
     private bool bossSpawned;
     public Slider waveBar;
-    public Slider nextWaveBar; // Thêm thanh nextWaveBar
+    public Slider nextWaveBar;
     public TMP_Text waveText;
     public TMP_Text nextWaveText;
 
     public float countdownToWave = 60f; // Countdown timer for the current wave, adjustable from the Inspector
     private float transitionTimer = 7f; // Timer for the next wave transition
     private bool inTransition = false; // Flag to track if we are in transition
+
+    public GameObject gameOverPanel; // Reference to the Game Over Panel
 
     void Start()
     {
@@ -43,6 +45,9 @@ public class Spawner : MonoBehaviour
         waveBar.gameObject.SetActive(true); // Bắt đầu với waveBar hiển thị
         nextWaveBar.gameObject.SetActive(false); // Ẩn nextWaveBar ban đầu
         nextWaveText.gameObject.SetActive(false); // Ẩn nextWaveText ban đầu
+
+        // Hide the Game Over Panel initially
+        gameOverPanel.SetActive(false);
     }
 
     void Update()
@@ -82,6 +87,13 @@ public class Spawner : MonoBehaviour
         else
         {
             // Transition to the next wave
+            if (bosses.transform.childCount > 0)
+            {
+                // Nếu boss còn sống và hết thời gian, game sẽ kết thúc
+                GameOver();
+                return;
+            }
+
             wave++;
             countdownToWave = 60f; // Reset countdownToWave to the set value
             transitionTimer = 7f; // Reset the transition timer
@@ -101,6 +113,12 @@ public class Spawner : MonoBehaviour
         {
             countdownToWave = 60f;
             bossSpawned = false;
+        }
+
+        // Check for game over condition: if boss is still alive after wave time ends
+        if (countdownToWave <= 0 && bosses.transform.childCount > 0)
+        {
+            GameOver();
         }
     }
 
@@ -143,7 +161,6 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    //het wave neu con enemy thi se giet het
     void KillAllEnemies()
     {
         foreach (Transform enemy in enemies.transform)
@@ -219,10 +236,21 @@ public class Spawner : MonoBehaviour
         enemy.transform.localScale = new Vector3(1, 1, 1);
         emanager.damage += (emanager.damage * wave * 0.1f) * 2;
         Instantiate(bossEffect, enemy.transform);
+
     }
 
-    void UpdateWaveText()
-    {
-        waveText.text = "WAVE: " + wave;
+        void UpdateWaveText()
+        {
+            waveText.text = "WAVE: " + wave;
+        }
+
+        void GameOver()
+        {
+            Debug.Log("Game Over! Bạn đã không tiêu diệt được boss trong thời gian quy định.");
+            gameOverPanel.SetActive(true); // Hiển thị panel Game Over
+            Time.timeScale = 0f; // Dừng thời gian game
+        }
     }
-}
+
+
+
