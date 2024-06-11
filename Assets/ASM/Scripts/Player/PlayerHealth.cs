@@ -1,66 +1,54 @@
-<<<<<<< Updated upstream
-﻿using UnityEngine;
-=======
-﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
->>>>>>> Stashed changes
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth;
+    public float maxHealth = 100f;
     public float currentHealth;
     public Slider healthSlider;
     private PlayerManager pmanager;
-    public GameObject deathCanvas;
-    public TMP_Text yourScore;
-
-    public GameObject gameOverPanel; // Reference to the Game Over Panel
 
     void Start()
     {
         pmanager = GetComponent<PlayerManager>();
-        maxHealth = pmanager.maxHP;
-        currentHealth = maxHealth;
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = currentHealth;
+        if (pmanager != null)
+        {
+            maxHealth = pmanager.maxHP; // Cập nhật maxHealth từ PlayerManager
+            currentHealth = maxHealth;
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
+        else
+        {
+            Debug.LogError("PlayerManager component not found on " + gameObject.name);
+        }
     }
-
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        healthSlider.value = currentHealth; // Cập nhật thanh máu
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            die();
+            Die();
         }
-
-        UpdateHealthBar();
     }
+
     public void Heal(float amount)
     {
         currentHealth += amount;
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
 
-        UpdateHealthBar();
+        healthSlider.value = currentHealth; // Cập nhật thanh máu
     }
 
-    void UpdateHealthBar()
+    void Die()
     {
-        healthSlider.value = currentHealth;
-    }
-    void die()
-    {
-<<<<<<< Updated upstream
+        // Optional: Add any additional logic for player death here.
         Destroy(gameObject);
-        gameOverPanel.SetActive(true); // Hiển thị panel Game Over
-=======
-        deathCanvas.SetActive(true);
-        yourScore.text = "Bạn đã sống sót đến đợt " + GameObject.Find("SPAWNER").GetComponent<Spawner>().wave;
->>>>>>> Stashed changes
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; // Dừng game
     }
 }
