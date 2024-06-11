@@ -168,7 +168,7 @@ public class levelManager : MonoBehaviour
             case "fireRate":
                 playerManager.IncreaseFireRate(1);
                 break;
-            case "maxBulletCount":
+            case "MaxBulletCount":
                 playerManager.IncreaseMaxBulletCount(10);
                 break;
             case "reloadSpeed":
