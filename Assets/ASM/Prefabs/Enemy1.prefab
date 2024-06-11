@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5456656564053557266}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws8.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2650338719811890189}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws5.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2306236575397267005}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws4.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8068159899564237597}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8438186082544039801}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws8.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8882885288453090563}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth.L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 28697889115273278}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth.R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1831291245338942383}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws6.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2162919764514137513}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws10.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6783600728656403993}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8937813015997750280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 261907781325186394}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2171206049534172580}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws9.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2282121139060068582}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws10.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5155395964470866406}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2428469345159167008}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2423790077883727344}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6407517220623304683}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws7.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3570305625877545906}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5321101947578613971}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws3.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1229098817904803058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spider_Fuga.c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7345433617196491645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth1.L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,7 +704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2233613990237057820}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws3.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3447883120052259601}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws9.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,6 +759,90 @@ Transform:
   - {fileID: 8438186082544039801}
   m_Father: {fileID: 2162919764514137513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7002683057403465587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8041214052009257110}
+  - component: {fileID: 7169540543014225349}
+  m_Layer: 8
+  m_Name: enemyminimap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8041214052009257110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7002683057403465587}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 2.53, z: -0.05}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2693545705326059562}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &7169540543014225349
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7002683057403465587}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 9cb00a5fbe0b54c49a2e4c6a6ad910d3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.46, y: 1.46}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &7067574785331855550
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2195778059580223553}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws5.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +883,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8094000927122239201}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +927,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4392771850413939030}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,7 +959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 527189554824833722}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws4.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -907,7 +991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8384725168359009876}
   - component: {fileID: 6540218853016677833}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spider_Fuga_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6750941462641016830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth1.R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1913312654537215328}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws7.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,7 +1170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9199169231878315948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paws6.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6793687795833820832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1150,7 +1234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4421719577656031834}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,7 +1272,7 @@ GameObject:
   - component: {fileID: 8506611770358934351}
   - component: {fileID: -2346435252298934908}
   - component: {fileID: 3339996591110818471}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1210,6 +1294,7 @@ Transform:
   m_Children:
   - {fileID: 1229098817904803058}
   - {fileID: 8384725168359009876}
+  - {fileID: 8041214052009257110}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-7275302884536014588
