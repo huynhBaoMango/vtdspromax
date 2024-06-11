@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth;
+    public float maxHealth = 100f;
     public float currentHealth;
     public Slider healthSlider;
     private PlayerManager pmanager;
@@ -11,39 +11,44 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         pmanager = GetComponent<PlayerManager>();
-        maxHealth = pmanager.maxHP;
-        currentHealth = maxHealth;
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = currentHealth;
+        if (pmanager != null)
+        {
+            maxHealth = pmanager.maxHP; // Cập nhật maxHealth từ PlayerManager
+            currentHealth = maxHealth;
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
+        else
+        {
+            Debug.LogError("PlayerManager component not found on " + gameObject.name);
+        }
     }
-
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        healthSlider.value = currentHealth; // Cập nhật thanh máu
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            die();
+            Die();
         }
-
-        UpdateHealthBar();
     }
+
     public void Heal(float amount)
     {
         currentHealth += amount;
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
 
-        UpdateHealthBar();
+        healthSlider.value = currentHealth; // Cập nhật thanh máu
     }
 
-    void UpdateHealthBar()
+    void Die()
     {
-        healthSlider.value = currentHealth;
-    }
-    void die()
-    {
+        // Optional: Add any additional logic for player death here.
         Destroy(gameObject);
+        Time.timeScale = 0f; // Dừng game
     }
 }
