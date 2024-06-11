@@ -172,11 +172,11 @@ public class Spawner : MonoBehaviour
     {
         EnemyManager emanager = enemy.GetComponent<EnemyManager>();
         enemy.transform.parent = bosses.transform;
-        emanager.maxHP += ((float)emanager.maxHP * wave * 0.1f) * 3;
+        emanager.maxHP = (emanager.maxHP*3) + (emanager.maxHP * wave * 0.1f);
         emanager.experiencePoints *= 2;
         emanager.attackRange *= 2;
         enemy.transform.localScale = new Vector3(1, 1, 1);
-        emanager.damage += ((float)emanager.damage * wave * 0.1f) * 2;
+        emanager.damage = (emanager.damage * 2) + (emanager.damage * wave * 0.1f);
         Instantiate(bossEffect, enemy.transform);
     }
 }
