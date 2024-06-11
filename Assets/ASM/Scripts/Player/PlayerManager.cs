@@ -1,5 +1,6 @@
 ﻿    using System.Collections.Generic;
-    using UnityEngine;
+using Unity.VisualScripting;
+using UnityEngine;
 
     public class PlayerManager : MonoBehaviour
     {
@@ -15,6 +16,8 @@
         public float fireRate = 1f;
         public bool isDead = false;
 
+        private PlayerHealth playerHealth;
+
         // Dictionary để theo dõi số lần mỗi buff được chọn
         private Dictionary<string, int> buffSelectionCounts = new Dictionary<string, int>
         {
@@ -29,11 +32,22 @@
             { "reloadSpeed", 0 }
         };
 
-        // Hàm để tăng các chỉ số
-        public void IncreaseHP(float amount)
+    private void Start()
+    {
+        playerHealth = GetComponent<PlayerHealth>();
+    }
+
+    // Hàm để tăng các chỉ số
+    public void IncreaseHP(float amount)
         {
             maxHP += amount;
+            playerHealth.currentHealth += amount;
         }
+
+        public void IncreaseCurrentHP(float amount)
+        {
+        playerHealth.currentHealth += amount;
+    }
 
         public void IncreaseSpeed(float amount)
         {

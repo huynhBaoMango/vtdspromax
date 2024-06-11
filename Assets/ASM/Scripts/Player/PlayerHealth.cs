@@ -30,6 +30,11 @@ public class PlayerHealth : MonoBehaviour
     {
         maxHealth = pmanager.maxHP;
         healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     public void TakeDamage(float damage)

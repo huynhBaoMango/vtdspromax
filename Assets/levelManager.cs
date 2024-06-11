@@ -55,6 +55,7 @@ public class levelManager : MonoBehaviour
     // Hàm xử lý việc tăng cấp
     void LevelUp()
     {
+        playerManager.IncreaseCurrentHP(playerManager.maxHP/4);
         level++;
         maxXP = level * 100;
         xpSlider.maxValue = maxXP;
@@ -124,7 +125,7 @@ public class levelManager : MonoBehaviour
             case "CritDamage":
                 return "Tăng sát thương chí mạng thêm 50%.";
             case "fireReset":
-                return "Tăng tốc độ nạp đạn thêm 10%.";
+                return "Tăng tốc độ bắn thêm 10%.";
             case "MaxBulletCount":
                 return "Tăng thêm 10 viên đạn mỗi băng.";
             case "fireRate":
