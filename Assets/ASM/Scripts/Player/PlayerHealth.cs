@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
             int oldScore = PlayerPrefs.GetInt("highScore");
             if (oldScore < GameObject.Find("SPAWNER").GetComponent<Spawner>().wave)
             {
-                PlayerPrefs.SetInt("highScore", GetComponent<Spawner>().wave);
+                PlayerPrefs.SetInt("highScore", GameObject.Find("SPAWNER").GetComponent<Spawner>().wave);
             }
         }
         else
