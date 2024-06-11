@@ -13,6 +13,7 @@
         public float reloadSpeed = 4f;
         public float fireReset = 4f;
         public float fireRate = 1f;
+        public bool isDead = false;
 
         // Dictionary để theo dõi số lần mỗi buff được chọn
         private Dictionary<string, int> buffSelectionCounts = new Dictionary<string, int>

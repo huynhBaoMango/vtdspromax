@@ -7,9 +7,11 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public Slider healthSlider;
     private PlayerManager pmanager;
+    private Animator anim;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         pmanager = GetComponent<PlayerManager>();
         if (pmanager != null)
         {
@@ -52,8 +54,20 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        // Optional: Add any additional logic for player death here.
-        Destroy(gameObject);
-        Time.timeScale = 0f; // Dừng game
+        pmanager.isDead = true;
+        anim.SetTrigger("isdead"); 
+        if (PlayerPrefs.GetInt("highScore") != null)
+        {
+            int oldScore = PlayerPrefs.GetInt("highScore");
+            if (oldScore < GameObject.Find("SPAWNER").GetComponent<Spawner>().wave)
+            {
+                PlayerPrefs.SetInt("highScore", GetComponent<Spawner>().wave);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("highScore", GetComponent<Spawner>().wave);
+        }
+
     }
 }

@@ -32,7 +32,10 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-        StartShooting();
+        if (!pmanager.isDead)
+        {
+            StartShooting();
+        }
 
     }
 
