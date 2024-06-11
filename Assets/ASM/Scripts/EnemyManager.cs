@@ -39,6 +39,7 @@ public class EnemyManager : MonoBehaviour
     void Die()
     {
         emove.isDead();
+        gameObject.GetComponent<Collider>().enabled = false;
         levelManager player = FindObjectOfType<levelManager>();
         if (player != null && !isDie)
         {

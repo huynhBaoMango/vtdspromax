@@ -33,6 +33,7 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         StartShooting();
+
     }
 
     void StartShooting()
@@ -42,40 +43,39 @@ public class Shooting : MonoBehaviour
 
         if (pmanager.currentBulletCount > 0 && fireReset <= 0)
         {
-            for (int i = 1; i <= pmanager.fireRate; i++)
-            {
-                StartCoroutine(ShootBullets());
-            }
+            StartCoroutine(ShootBullets());
             fireReset = pmanager.fireReset;
         }
     }
 
     IEnumerator ShootBullets()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<bulletInfo>().damage = pmanager.damage;
-        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-        muzzleFlash.SetActive(true);
-
-        if (bulletRb)
+       
+        for (int i = 1; i <= pmanager.fireRate; i++)
         {
-            bulletRb.velocity = firePoint.forward * bulletSpeed;
-        }
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<bulletInfo>().damage = pmanager.damage;
+            Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+            muzzleFlash.SetActive(true);
 
+            if (bulletRb)
+            {
+                bulletRb.velocity = firePoint.forward * bulletSpeed;
+            }
+
+            muzzleFlash.SetActive(false);
+
+            
+            yield return new WaitForSeconds(0.15f);
+        }
         pmanager.DecreaseCurrentBulletCount(1);
         UpdateBulletCountText();
-
-        
-
-
-        yield return new WaitForSeconds(0.15f);
-
-        muzzleFlash.SetActive(false); 
-
         if (pmanager.currentBulletCount == 0)
         {
-            Reload(); 
+            Reload();
         }
+
+
     }
 
     IEnumerator ReloadBullets()
