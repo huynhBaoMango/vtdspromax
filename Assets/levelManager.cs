@@ -124,11 +124,11 @@ public class levelManager : MonoBehaviour
             case "CritDamage":
                 return "Tăng sát thương chí mạng thêm 50%.";
             case "fireReset":
-                return "Tăng tốc độ bắn thêm 10%.";
+                return "Tăng tốc độ nạp đạn thêm 10%.";
             case "MaxBulletCount":
                 return "Tăng thêm 10 viên đạn mỗi băng.";
             case "fireRate":
-                return "Tăng liên xạ thêm 1, giảm 30% damage.";
+                return "Tăng liên xạ thêm 1.";
             case "reloadSpeed":
                     return "Tăng tốc độ nạp đạn 10%";
             default:
