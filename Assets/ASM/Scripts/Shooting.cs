@@ -83,11 +83,11 @@ public class Shooting : MonoBehaviour
         gunImage.color = new Color(1f, 1f, 1f, 1f); 
         reloadSlider.gameObject.SetActive(true); 
 
-        float reloadTime = pmanager.fireReset;
+        float reloadTime = pmanager.reloadSpeed;
         while (reloadTime > 0)
         {
             reloadTime -= Time.deltaTime;
-            reloadSlider.value = 1 - (reloadTime / pmanager.fireReset);
+            reloadSlider.value = 1 - (reloadTime / pmanager.reloadSpeed);
             yield return null;
         }
 
