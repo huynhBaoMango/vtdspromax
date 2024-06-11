@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public Slider healthSlider;
     private PlayerManager pmanager;
+
+    public GameObject gameOverPanel; // Reference to the Game Over Panel
 
     void Start()
     {
@@ -45,5 +47,7 @@ public class PlayerHealth : MonoBehaviour
     void die()
     {
         Destroy(gameObject);
+        gameOverPanel.SetActive(true); // Hiển thị panel Game Over
+        Time.timeScale = 0f;
     }
 }
