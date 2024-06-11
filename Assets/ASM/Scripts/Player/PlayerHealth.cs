@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 ﻿using UnityEngine;
+=======
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+>>>>>>> Stashed changes
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -7,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public Slider healthSlider;
     private PlayerManager pmanager;
+    public GameObject deathCanvas;
+    public TMP_Text yourScore;
 
     public GameObject gameOverPanel; // Reference to the Game Over Panel
 
@@ -46,8 +54,13 @@ public class PlayerHealth : MonoBehaviour
     }
     void die()
     {
+<<<<<<< Updated upstream
         Destroy(gameObject);
         gameOverPanel.SetActive(true); // Hiển thị panel Game Over
+=======
+        deathCanvas.SetActive(true);
+        yourScore.text = "Bạn đã sống sót đến đợt " + GameObject.Find("SPAWNER").GetComponent<Spawner>().wave;
+>>>>>>> Stashed changes
         Time.timeScale = 0f;
     }
 }
