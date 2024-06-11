@@ -1731,8 +1731,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -483, y: -286.42404}
-  m_SizeDelta: {x: 350, y: 264.848}
+  m_AnchoredPosition: {x: -505, y: -379.27}
+  m_SizeDelta: {x: 377.344, y: 163.461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926440051
 MonoBehaviour:
@@ -4125,8 +4125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24, y: 91}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0.0000047684, y: 31}
+  m_SizeDelta: {x: 316.258, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727311133
 MonoBehaviour:
@@ -4148,7 +4148,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BEST SCORT
+  m_text: 'BEST SCORE:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba8f9d32d8d3679449854c556f146997, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: ba8f9d32d8d3679449854c556f146997, type: 2}
@@ -4211,7 +4211,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -55.397293, w: 0}
+  m_margin: {x: 0, y: 0, z: 1.497986, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4314,6 +4314,7 @@ GameObject:
   - component: {fileID: 1770212304}
   - component: {fileID: 1770212303}
   - component: {fileID: 1770212302}
+  - component: {fileID: 1770212305}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4395,6 +4396,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770212305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770212301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c9f675552caef448f45d24e92864cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highscoretext: {fileID: 842137946}
 --- !u!1 &1795121969
 GameObject:
   m_ObjectHideFlags: 0
