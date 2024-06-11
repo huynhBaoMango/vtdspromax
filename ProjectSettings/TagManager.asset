@@ -7,11 +7,12 @@ TagManager:
   - Enemy
   - FX
   - bullet
+  - BOSS
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - OBSTACLE
   - Water
   - UI
   - 

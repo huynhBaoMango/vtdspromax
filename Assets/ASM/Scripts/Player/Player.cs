@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     public PlayerManager playerManager; // Tham chiếu đến PlayerManager
 
-    private int currentHP;
+    private float currentHP;
     private int experience = 0;
     private int level = 1; // Cấp độ ban đầu của người chơi
     public Slider xpSlider; // Thêm biến tham chiếu đến Slider
@@ -220,7 +220,8 @@ public class Player : MonoBehaviour
         EnemyManager enemy = FindObjectOfType<EnemyManager>();
         if (enemy != null)
         {
-            int damageDealt = CalculateDamage();
+            //int damageDealt = CalculateDamage();
+            int damageDealt = 0;    
             enemy.TakeDamage(damageDealt);
             Debug.Log("Attacked enemy for " + damageDealt + " damage.");
         }
@@ -230,14 +231,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    int CalculateDamage()
+    /* float CalculateDamage()
     {
         // Tính toán sát thương, kiểm tra tỷ lệ chí mạng
         bool isCrit = Random.value < playerManager.critRate;
         if (isCrit)
         {
-            return Mathf.RoundToInt(playerManager.damage * playerManager.critDamage);
+            return playerManager.damage * playerManager.critDamage;
         }
         return playerManager.damage;
-    }
+    } */
 }

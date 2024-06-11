@@ -3,18 +3,22 @@
 public class EnemyManager : MonoBehaviour
 {
     // Các thuộc tính của enemy
-    public int maxHP = 100;
-    public int experiencePoints = 50;
-    public int damage = 20;
-    public float speed = 3f;
+    public float maxHP;
+    public int experiencePoints;
+    public float damage;
+    public float speed;
+    public float attackRange;
     public float currentHP;
     private AnimationsController animationsController;
+    private enemyMove emove;
+    private bool isDie;
 
     void Start()
     {
-        // Thiết lập máu hiện tại bằng máu tối đa khi bắt đầu
+        isDie = false;  
         currentHP = maxHP;
         animationsController = GetComponent<AnimationsController>();
+        emove = GetComponent<enemyMove>();
     }
 
     // Hàm này sẽ gọi khi enemy nhận sát thương
@@ -32,15 +36,16 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    // Hàm này sẽ gọi khi enemy chết
     void Die()
     {
-        // Thêm logic cho cái chết của enemy (vd: phát animation, thêm XP cho người chơi, etc.)
-        Player player = FindObjectOfType<Player>();
-        if (player != null)
+        emove.isDead();
+        levelManager player = FindObjectOfType<levelManager>();
+        if (player != null && !isDie)
         {
-            player.EnemyDefeated(this); // Gửi thông tin Enemy cho Player để xử lý khi Enemy chết
+            player.EnemyDefeated(this);
+            isDie = true;
         }
-        Destroy(gameObject); // Hủy GameObject của Enemy khi chết
+        animationsController.SetDead();
+        Destroy(gameObject, 2f);
     }
 }
