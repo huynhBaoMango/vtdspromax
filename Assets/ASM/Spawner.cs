@@ -57,6 +57,7 @@ public class Spawner : MonoBehaviour
             if(bosses.transform.childCount == 0)
             {
                 countdownToWave = 60f;
+                wave++;
                 bossSpawned = false; 
             }
         }
