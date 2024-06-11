@@ -39,7 +39,6 @@ public class EnemyManager : MonoBehaviour
     void Die()
     {
         emove.isDead();
-        gameObject.tag = "Untagged";
         levelManager player = FindObjectOfType<levelManager>();
         if (player != null && !isDie)
         {
