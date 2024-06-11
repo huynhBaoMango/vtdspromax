@@ -20,7 +20,7 @@ public class levelManager : MonoBehaviour
     public TMP_Text[] buffDescriptionTMPs = new TMP_Text[3];
     public Button[] selectButtons = new Button[3];
 
-    private List<string> buffNames = new List<string> { "HP", "Damage", "Speed", "CritRate", "CritDamage", "fireReset", "fireRate", "maxBulletCount" };
+    private List<string> buffNames = new List<string> { "HP", "Damage", "Speed", "CritRate", "CritDamage", "fireReset", "fireRate", "maxBulletCount", "reloadSpeed" };
     private string selectedAttribute;
 
 
@@ -131,6 +131,8 @@ public class levelManager : MonoBehaviour
                 return "Tăng thêm 10 viên đạn mỗi băng.";
             case "fireRate":
                 return "Tăng liên xạ thêm 1.";
+            case "reloadSpeed":
+                    return "Tăng tốc độ nạp đạn 10%";
             default:
                 return "";
         }
@@ -170,6 +172,9 @@ public class levelManager : MonoBehaviour
                 break;
             case "maxBulletCount":
                 playerManager.IncreaseMaxBulletCount(10);
+                break;
+            case "reloadSpeed":
+                playerManager.IncreaseReloadSpeed(playerManager.reloadSpeed + playerManager.reloadSpeed*0.1f);
                 break;
             default:
                 break;

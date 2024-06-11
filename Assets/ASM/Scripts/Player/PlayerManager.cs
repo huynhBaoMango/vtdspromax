@@ -9,7 +9,8 @@
         public float critRate = 0.1f; // Tỷ lệ chí mạng, giá trị từ 0 đến 1
         public float critDamage = 1.3f; // Sát thương chí mạng, ví dụ: 2.0f tức là gấp đôi sát thương thường
         public int maxBulletCount = 30; 
-        public int currentBulletCount = 30; 
+        public int currentBulletCount = 30;
+        public float reloadSpeed = 4f;
         public float fireReset = 4f;
         public float fireRate = 1f;
 
@@ -24,6 +25,7 @@
             { "MaxBulletCount", 0 },
             { "fireReset", 0 },
             { "fireRate", 0 },
+            { "reloadSpeed", 0 }
         };
 
         // Hàm để tăng các chỉ số
@@ -77,9 +79,13 @@
         {
             fireRate += amount;
         }
+    public void IncreaseReloadSpeed(float amount)
+    {
+        reloadSpeed -= amount;
+    }
 
-        // Hàm để tăng số lần buff được chọn
-        public bool CanSelectBuff(string buffName)
+    // Hàm để tăng số lần buff được chọn
+    public bool CanSelectBuff(string buffName)
         {
             return buffSelectionCounts[buffName] < 7;
         }
