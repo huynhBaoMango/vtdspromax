@@ -25,11 +25,8 @@ public class Spawner : MonoBehaviour
     private bool bossSpawned;
     public Slider waveBar;
 <<<<<<< HEAD
-<<<<<<< HEAD
     public TMP_Text waveText;
 =======
-=======
->>>>>>> parent of 295e3b6 (dada)
     public Slider nextWaveBar; // Thêm thanh nextWaveBar
     public TMP_Text waveText;
     public TMP_Text nextWaveText;
@@ -37,9 +34,6 @@ public class Spawner : MonoBehaviour
     public float countdownToWave = 60f; // Countdown timer for the current wave, adjustable from the Inspector
     private float transitionTimer = 7f; // Timer for the next wave transition
     private bool inTransition = false; // Flag to track if we are in transition
-<<<<<<< HEAD
->>>>>>> parent of 295e3b6 (dada)
-=======
 >>>>>>> parent of 295e3b6 (dada)
 
     void Start()
@@ -59,9 +53,6 @@ public class Spawner : MonoBehaviour
         waveBar.gameObject.SetActive(true); // Bắt đầu với waveBar hiển thị
         nextWaveBar.gameObject.SetActive(false); // Ẩn nextWaveBar ban đầu
         nextWaveText.gameObject.SetActive(false); // Ẩn nextWaveText ban đầu
-<<<<<<< HEAD
->>>>>>> parent of 295e3b6 (dada)
-=======
 >>>>>>> parent of 295e3b6 (dada)
     }
 
@@ -112,9 +103,6 @@ public class Spawner : MonoBehaviour
 =======
             countdownToWave = 60f;
             bossSpawned = false;
-<<<<<<< HEAD
->>>>>>> parent of 295e3b6 (dada)
-=======
 >>>>>>> parent of 295e3b6 (dada)
         }
     }
@@ -268,8 +256,5 @@ public class Spawner : MonoBehaviour
     {
         waveText.text = "WAVE: " + wave;
     }
-<<<<<<< HEAD
->>>>>>> parent of 295e3b6 (dada)
-=======
 >>>>>>> parent of 295e3b6 (dada)
 }
