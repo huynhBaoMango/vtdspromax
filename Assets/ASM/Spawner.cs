@@ -134,6 +134,10 @@ public class Spawner : MonoBehaviour
                 }
                 return;
             }
+            else
+            {
+                Debug.Log("a");
+            }
         }
     }
 
