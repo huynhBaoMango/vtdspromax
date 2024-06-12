@@ -47,7 +47,7 @@ using UnityEngine;
         public void IncreaseCurrentHP(float amount)
         {
         playerHealth.currentHealth += amount;
-    }
+        }
 
         public void IncreaseSpeed(float amount)
         {
