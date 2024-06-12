@@ -42,11 +42,18 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         healthSlider.value = currentHealth; // Cập nhật thanh máu
-
+        if(currentHealth > 0) {
+            FindAnyObjectByType<AudioManager>().Play("Hurt");
+            FindAnyObjectByType<AudioManager>().Play("Hurt1");
+        }
+        
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            if (!pmanager.isDead) { FindAnyObjectByType<AudioManager>().PlayButWait("Dead"); }
             Die();
+            
+            
         }
     }
 
@@ -62,7 +69,8 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         pmanager.isDead = true;
-        anim.SetTrigger("isdead"); 
+        anim.SetTrigger("isdead");
+        
         if (PlayerPrefs.GetInt("highScore") != null)
         {
             int oldScore = PlayerPrefs.GetInt("highScore");

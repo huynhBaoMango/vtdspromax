@@ -473,7 +473,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -947,7 +947,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 60%
+  m_Text: 100%
 --- !u!222 &1684423819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1011,7 +1011,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: 1
   slider: {fileID: 0}
-  speed: 0.4
+  speed: 0.5
+  sliderValuePass: {fileID: 0}
 --- !u!114 &1952178040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,7 +1060,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

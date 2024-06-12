@@ -43,7 +43,7 @@ public class Shooting : MonoBehaviour
     {
         isShooting = true;
         fireReset -= 1 * Time.deltaTime;
-
+        
         if (pmanager.currentBulletCount > 0 && fireReset <= 0)
         {
             StartCoroutine(ShootBullets());
@@ -60,6 +60,7 @@ public class Shooting : MonoBehaviour
             bullet.GetComponent<bulletInfo>().damage = pmanager.damage;
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
             muzzleFlash.SetActive(true);
+            FindAnyObjectByType<AudioManager>().Play("Shoot");
 
             if (bulletRb)
             {

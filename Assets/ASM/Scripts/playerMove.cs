@@ -49,6 +49,15 @@ public class playerMove : MonoBehaviour
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
+            if(horizontal !=0 || vertical !=0 )
+            {
+                FindAnyObjectByType<AudioManager>().PlayButWait("Foot");
+            }
+            else
+            {
+                FindAnyObjectByType<AudioManager>().Stop("Foot");
+
+            }
             if (cam != null)
             {
                 camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
@@ -81,6 +90,7 @@ public class playerMove : MonoBehaviour
         this.moveInput = move;
         ConvertMoveInput();
         UpdateAnimator();
+        
     }
 
     private void UpdateAnimator()
