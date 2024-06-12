@@ -16,6 +16,7 @@ public class playerMove : MonoBehaviour
 
     float forwardAmount;
     float turnAmount;
+    public GameObject tabMenu;
 
 
     private void Start()
@@ -39,6 +40,15 @@ public class playerMove : MonoBehaviour
             Vector3 lookDir = lookPos - transform.position;
             lookDir.y = 0;
             transform.LookAt(transform.position + lookDir, Vector3.up);
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                tabMenu.SetActive(true);
+            }
+            if(Input.GetKeyUp(KeyCode.Tab))
+            {
+                tabMenu.SetActive(false);   
+            }
         }
     }
 

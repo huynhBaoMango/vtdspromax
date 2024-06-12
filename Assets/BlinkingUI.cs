@@ -6,13 +6,15 @@ public class BlinkingUI : MonoBehaviour
 {
     public float blinkInterval = 0.5f; // Thời gian giữa các lần chớp nháy
     public float fadeDuration = 0.25f; // Thời gian mờ dần
+    public int blinkCount = 5; // Số lần chớp nháy
 
-    private Image imageComponent;
+    private Graphic[] childGraphics;
     private bool isBlinking = false;
 
     void Start()
     {
-        imageComponent = GetComponent<Image>();
+        // Lấy tất cả các component Image và Text trong các gameobject con
+        childGraphics = GetComponentsInChildren<Graphic>();
         // Bắt đầu hàm Blink()
         StartBlink();
     }
@@ -22,39 +24,56 @@ public class BlinkingUI : MonoBehaviour
         if (!isBlinking)
         {
             isBlinking = true;
-            // Gọi hàm Fade() sau mỗi blinkInterval giây
-            InvokeRepeating("Fade", 0f, blinkInterval);
+            // Gọi hàm BlinkCoroutine để bắt đầu chớp nháy
+            StartCoroutine(BlinkCoroutine());
         }
     }
 
-    void Fade()
+    IEnumerator BlinkCoroutine()
     {
-        // Bắt đầu coroutine để thực hiện fading
-        StartCoroutine(FadeCoroutine());
-    }
-
-    IEnumerator FadeCoroutine()
-    {
-        Color originalColor = imageComponent.color;
-        Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0f); // Màu mờ dần đến màu trong suốt
-
-        float elapsedTime = 0f;
-        while (elapsedTime < fadeDuration)
+        for (int i = 0; i < blinkCount; i++)
         {
-            // Làm mờ dần màu của Image từ màu gốc đến màu mục tiêu
-            imageComponent.color = Color.Lerp(originalColor, targetColor, elapsedTime / fadeDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            // Fade out tất cả cùng lúc
+            yield return Fade(1f, 0f);
+            // Chờ thời gian giữa các lần chớp nháy
+            yield return new WaitForSeconds(blinkInterval);
+            // Fade in tất cả cùng lúc
+            yield return Fade(0f, 1f);
+            // Chờ thời gian giữa các lần chớp nháy
+            yield return new WaitForSeconds(blinkInterval);
         }
 
-        // Thiết lập màu gốc lại để chớp nháy tiếp theo
-        imageComponent.color = originalColor;
+        // Đảm bảo tất cả các phần tử trở về trạng thái ban đầu
+        SetAlpha(1f);
+        isBlinking = false;
+    }
+
+    IEnumerator Fade(float startAlpha, float endAlpha)
+    {
+        foreach (var graphic in childGraphics)
+        {
+            graphic.CrossFadeAlpha(endAlpha, fadeDuration, true);
+        }
+
+        yield return new WaitForSeconds(fadeDuration);
+    }
+
+    void SetAlpha(float alpha)
+    {
+        foreach (var graphic in childGraphics)
+        {
+            Color color = graphic.color;
+            color.a = alpha;
+            graphic.color = color;
+        }
     }
 
     void OnDisable()
     {
-        // Khi đối tượng bị vô hiệu hóa, hủy bỏ việc gọi hàm Fade()
-        CancelInvoke("Fade");
+        // Khi đối tượng bị vô hiệu hóa, dừng việc chớp nháy
         isBlinking = false;
+        StopAllCoroutines();
+        // Đảm bảo tất cả các phần tử trở về trạng thái ban đầu
+        SetAlpha(1f);
     }
 }
