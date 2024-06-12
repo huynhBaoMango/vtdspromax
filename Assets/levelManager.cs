@@ -117,21 +117,21 @@ public class levelManager : MonoBehaviour
             case "HP":
                 return "Tăng máu thêm 20.";
             case "Damage":
-                return "Tăng Damage thêm 10%.";
+                return "Tăng Damage thêm 10 phần trăm.";
             case "Speed":
-                return "Tăng tốc độ di chuyển thêm 5%.";
+                return "Tăng tốc độ di chuyển thêm 5 phần trăm.";
             case "CritRate":
-                return "Tăng tỉ lệ chí mạng thêm 5%";
+                return "Tăng tỉ lệ chí mạng thêm 5 phần trăm";
             case "CritDamage":
-                return "Tăng sát thương chí mạng thêm 50%.";
+                return "Tăng sát thương chí mạng thêm 50 phần trăm.";
             case "fireReset":
-                return "Tăng tốc độ bắn thêm 10%.";
+                return "Tăng tốc độ bắn thêm 10 phần trăm.";
             case "MaxBulletCount":
                 return "Tăng thêm 10 viên đạn mỗi băng.";
             case "fireRate":
-                return "Tăng liên xạ thêm 1, giảm 30% damage";
+                return "Tăng liên xạ thêm 1, giảm 30 phần trăm damage";
             case "reloadSpeed":
-                    return "Tăng tốc độ nạp đạn 10%";
+                    return "Tăng tốc độ nạp đạn 10 phần trăm";
             default:
                 return "";
         }

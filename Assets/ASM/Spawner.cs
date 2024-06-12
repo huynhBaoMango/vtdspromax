@@ -25,12 +25,20 @@ public class Spawner : MonoBehaviour
     private bool bossSpawned;
     public Slider waveBar;
     public TMP_Text waveText;
+    public List<Transform> spawnPointList;
 
     void Start()
     {
+        spawnPointList = new List<Transform>();
+        GameObject spawnPoints = GameObject.Find("spawnpoints");
+        foreach(Transform t in spawnPoints.transform)
+        {
+            spawnPointList.Add(t);
+        }
         player = GameObject.Find("PLAYER").transform;
         countdownToWave = 60f;
         bossSpawned = false;
+
     }
 
     // Update is called once per frame
@@ -85,7 +93,7 @@ public class Spawner : MonoBehaviour
             {
                 SpawnRandomEnemy();
             }
-            timeToNextSpawn = 5f;
+            timeToNextSpawn = 3f;
         }
         if (!bossSpawned)
         {
@@ -100,16 +108,12 @@ public class Spawner : MonoBehaviour
 
     Vector3 GetRandomPosition()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * spawnRadius;
-        randomDirection += player.position;
-        randomDirection.y = player.position.y;
-        return randomDirection;
+        return spawnPointList[Random.Range(0, spawnPointList.Count)].position;
     }
 
     bool IsPositionValid(Vector3 position)
     {
-        Collider[] colliders = Physics.OverlapSphere(position, 0.5f, forbiddenLayer);
-        return colliders.Length == 0;
+        return Vector3.Distance(position, player.position) < 60f;
     }
 
     void SpawnRandomEnemy()
@@ -133,10 +137,6 @@ public class Spawner : MonoBehaviour
                     setEnemyDetail(enemy);
                 }
                 return;
-            }
-            else
-            {
-                Debug.Log("a");
             }
         }
     }
@@ -171,6 +171,7 @@ public class Spawner : MonoBehaviour
         EnemyManager emanager = enemy.GetComponent<EnemyManager>();
         emanager.maxHP += (float)emanager.maxHP * wave * 0.1f;
         emanager.damage += (float)emanager.damage * wave * 0.1f;
+        emanager.experiencePoints += (wave * 10)-10;
     }
     private void setEnemyDetailBoss(GameObject enemy)
     {
@@ -178,7 +179,7 @@ public class Spawner : MonoBehaviour
         EnemyManager emanager = enemy.GetComponent<EnemyManager>();
         enemy.transform.parent = bosses.transform;
         emanager.maxHP = (emanager.maxHP * 3) + (emanager.maxHP * wave * 0.1f);
-        emanager.experiencePoints *= 2;
+        emanager.experiencePoints = (emanager.experiencePoints + (wave * 10) - 10) * 2;
         emanager.attackRange *= 2;
         enemy.transform.localScale = new Vector3(1, 1, 1);
         emanager.damage = (emanager.damage * 2) + (emanager.damage * wave * 0.1f);

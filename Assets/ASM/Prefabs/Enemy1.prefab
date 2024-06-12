@@ -1311,8 +1311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 20
   experiencePoints: 50
-  damage: 5
-  speed: 2
+  damage: 10
+  speed: 3
   attackRange: 3
   currentHP: 0
 --- !u!95 &628857855767290786

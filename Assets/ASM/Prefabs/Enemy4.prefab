@@ -880,10 +880,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839117fef398c0e46b03fbcba744cd62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  experiencePoints: 50
-  damage: 10
-  speed: 3
+  maxHP: 200
+  experiencePoints: 120
+  damage: 30
+  speed: 4
   attackRange: 3
   currentHP: 0
 --- !u!95 &8187015543188906532
