@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
@@ -8,9 +8,19 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
     private PlayerManager pmanager;
     private Animator anim;
+    public Image bloodtop;
+    public Image bloodbot;
+    public Image bloodleft;
+    public Image bloodright;
+    public float blinkDuration = 1f; // Thời gian chóp chóp
+    public float blinkSpeed = 0.1f; // Tốc độ chóp chóp
 
     void Start()
     {
+        bloodtop.enabled=false;
+        bloodbot.enabled=false;
+        bloodleft.enabled=false;
+        bloodright.enabled=false;
         anim = GetComponent<Animator>();
         pmanager = GetComponent<PlayerManager>();
         if (pmanager != null)
@@ -40,9 +50,15 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        StartCoroutine(BlinkScreenDamage());
         currentHealth -= damage;
         healthSlider.value = currentHealth; // Cập nhật thanh máu
         if(currentHealth > 0) {
+        bloodtop.enabled=true;
+        bloodbot.enabled=true;
+        bloodleft.enabled=true;
+        bloodright.enabled=true;
+        Invoke("HideScreenDamage", 0.5f);
             FindAnyObjectByType<AudioManager>().Play("Hurt");
             FindAnyObjectByType<AudioManager>().Play("Hurt1");
         }
@@ -85,4 +101,29 @@ public class PlayerHealth : MonoBehaviour
         }
 
     }
+    void HideScreenDamage()
+    {
+       bloodtop.enabled=false;
+        bloodbot.enabled=false;
+        bloodleft.enabled=false;
+        bloodright.enabled=false;
+    }
+    IEnumerator BlinkScreenDamage()
+    {
+        float endTime = Time.time + blinkDuration;
+        while (Time.time < endTime)
+        {
+            bloodtop.enabled = !bloodtop.enabled;
+            bloodbot.enabled = !bloodbot.enabled;
+            bloodleft.enabled = !bloodleft.enabled;
+            bloodright.enabled = !bloodright.enabled; // Đảo trạng thái hiển thị của Image
+            yield return new WaitForSeconds(blinkSpeed); // Đợi một khoảng thời gian trước khi chóp tiếp
+        }
+         bloodtop.enabled  = false; 
+        bloodbot.enabled = false;
+           bloodleft.enabled =false;
+            bloodright.enabled =false;// Đảm bảo Image được tắt sau khi chóp xong
+    }
+
+
 }
