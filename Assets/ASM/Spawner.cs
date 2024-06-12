@@ -26,6 +26,8 @@ public class Spawner : MonoBehaviour
     public Slider waveBar;
     public TMP_Text waveText;
     public List<Transform> spawnPointList;
+    public GameObject warning;
+    public Text warningText;
 
     void Start()
     {
@@ -57,6 +59,7 @@ public class Spawner : MonoBehaviour
         }
         else
         {
+            warning.SetActive(false);
             waveSpawn();
         }
 
@@ -68,6 +71,11 @@ public class Spawner : MonoBehaviour
                 countdownToWave = 60f;
                 bossSpawned = false;
             }
+        }
+        if(countdownToWave < 6)
+        {
+            warning.SetActive(true);
+            warningText.text = "WAVE " + wave + " INCOMING";
         }
     }
 
