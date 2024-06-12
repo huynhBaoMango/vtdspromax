@@ -75,13 +75,14 @@ public class Spawner : MonoBehaviour
                 wave++;
                 countdownToWave = 60f;
                 bossSpawned = false;
-                FindAnyObjectByType<AudioManager>().PlayButWait("theme1");
+                FindAnyObjectByType<AudioManager>().Play("wavedone");
                 FindAnyObjectByType<AudioManager>().Stop("theme2");
 
                 foreach(Transform enemy in enemies.transform)
                 {
                     StartCoroutine(killEnemy(enemy));
                 }
+                FindAnyObjectByType<AudioManager>().PlayButWait("theme1");
             }
         }
         if(countdownToWave < 6 && countdownToWave > 1)
@@ -210,8 +211,9 @@ public class Spawner : MonoBehaviour
 
     IEnumerator killEnemy(Transform enemy)
     {
+        yield return new WaitForSeconds(0.3f);
         GameObject enemy1 = enemy.gameObject;
         enemy1.GetComponent<EnemyManager>().DieByWave();
-        yield return new WaitForSeconds(0.15f);
+        
     }
 }
