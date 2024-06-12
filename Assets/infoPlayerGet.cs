@@ -14,6 +14,15 @@ public class infoPlayerGet : MonoBehaviour
     public TMP_Text maxbullettext;
     public TMP_Text reloadtext;
     public TMP_Text fireratetext;
+    public TMP_Text hptext1;
+    public TMP_Text sptext1;
+    public TMP_Text damagetext1;
+    public TMP_Text critrtext1;
+    public TMP_Text critdtext1;
+    public TMP_Text aspeed1;
+    public TMP_Text maxbullettext1;
+    public TMP_Text reloadtext1;
+    public TMP_Text fireratetext1;
 
     private GameObject player;
 
@@ -34,5 +43,15 @@ public class infoPlayerGet : MonoBehaviour
         maxbullettext.text = player.GetComponent<PlayerManager>().currentBulletCount + "/" +player.GetComponent<PlayerManager>().maxBulletCount;
         reloadtext.text = player.GetComponent<PlayerManager>().reloadSpeed + "";
         fireratetext.text = player.GetComponent<PlayerManager>().fireRate + "";
+
+        hptext1.text = "Take: " + player.GetComponent<PlayerManager>().buffSelectionCounts["HP"];
+        sptext1.text = "Take: " + player.GetComponent<PlayerManager>().buffSelectionCounts["Speed"];
+        damagetext1.text = "Take: " + player.GetComponent<PlayerManager>().buffSelectionCounts["Damage"];
+        critrtext1.text = "Take: " + player.GetComponent<PlayerManager>().buffSelectionCounts["CritRate"];
+        critdtext1.text = "Take: " + player.GetComponent<PlayerManager>().buffSelectionCounts["CritDamage"];
+        aspeed1.text = "Take: " + player.GetComponent<PlayerManager>().buffSelectionCounts["fireReset"];
+        maxbullettext1.text = "Take: " + player.GetComponent<PlayerManager>().buffSelectionCounts["MaxBulletCount"];
+        reloadtext1.text = "Take: " + player.GetComponent<PlayerManager>().buffSelectionCounts["reloadSpeed"];
+        fireratetext1.text = "Take: " + player.GetComponent<PlayerManager>().buffSelectionCounts["fireRate"];
     }
 }

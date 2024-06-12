@@ -19,7 +19,7 @@ using UnityEngine;
         private PlayerHealth playerHealth;
 
         // Dictionary để theo dõi số lần mỗi buff được chọn
-        private Dictionary<string, int> buffSelectionCounts = new Dictionary<string, int>
+        [HideInInspector] public Dictionary<string, int> buffSelectionCounts = new Dictionary<string, int>
         {
             { "HP", 0 },
             { "Damage", 0 },
@@ -103,7 +103,7 @@ using UnityEngine;
     // Hàm để tăng số lần buff được chọn
     public bool CanSelectBuff(string buffName)
         {
-            return buffSelectionCounts[buffName] < 7;
+            return buffSelectionCounts[buffName] < 10;
         }
 
         public void BuffSelected(string buffName)
@@ -120,7 +120,7 @@ using UnityEngine;
             List<string> validBuffs = new List<string>();
             foreach (var buff in buffSelectionCounts)
             {
-                if (buff.Value < 7)
+                if (buff.Value < 10)
                 {
                     validBuffs.Add(buff.Key);
                 }
