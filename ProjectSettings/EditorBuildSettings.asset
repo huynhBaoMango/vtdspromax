@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HaiDz/Map/NewMap.unity
     guid: bdb02cc9ed9b97c4a92f7a2334ff0a41
+  - enabled: 1
+    path: Assets/ASM/Scene/loading.unity
+    guid: 285a0d8e3e682cf4ab42c60f5ada014e
   m_configObjects: {}
