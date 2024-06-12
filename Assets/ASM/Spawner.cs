@@ -28,6 +28,7 @@ public class Spawner : MonoBehaviour
     public List<Transform> spawnPointList;
     public GameObject warning;
     public Text warningText;
+    public bool Stop;
 
     void Start()
     {
@@ -40,13 +41,15 @@ public class Spawner : MonoBehaviour
         player = GameObject.Find("PLAYER").transform;
         countdownToWave = 60f;
         bossSpawned = false;
+        Stop = false;
 
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemyPrefabs == null)
+        if (enemyPrefabs == null || Stop)
         {
             return;
         }
