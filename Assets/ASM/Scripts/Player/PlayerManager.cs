@@ -93,7 +93,7 @@ using UnityEngine;
         public void IncreaseFireRate(int amount)
         {
             fireRate += amount;
-            damage -= damage / 3;
+            damage -= damage * 0.4f;
         }
     public void IncreaseReloadSpeed(float amount)
     {

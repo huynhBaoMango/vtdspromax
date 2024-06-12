@@ -37,7 +37,7 @@ public class infoPlayerGet : MonoBehaviour
         hptext.text = player.GetComponent<PlayerHealth>().currentHealth + "/" + player.GetComponent<PlayerManager>().maxHP;
         sptext.text = player.GetComponent<PlayerManager>().speed + "";
         damagetext.text = player.GetComponent<PlayerManager>().damage + "";
-        critrtext.text = player.GetComponent<PlayerManager>().critRate * 10 + " %";
+        critrtext.text = player.GetComponent<PlayerManager>().critRate * 100 + " %";
         critdtext.text = player.GetComponent<PlayerManager>().critDamage * 10 + " %";
         aspeed.text = player.GetComponent<PlayerManager>().fireReset + "";
         maxbullettext.text = player.GetComponent<PlayerManager>().currentBulletCount + "/" +player.GetComponent<PlayerManager>().maxBulletCount;

@@ -117,21 +117,21 @@ public class levelManager : MonoBehaviour
             case "HP":
                 return "Tăng máu thêm 20.";
             case "Damage":
-                return "Tăng Damage thêm 10 phần trăm.";
+                return "Tăng Damage thêm 20 phần trăm.";
             case "Speed":
-                return "Tăng tốc độ di chuyển thêm 5 phần trăm.";
+                return "Tăng tốc độ di chuyển thêm 10 phần trăm.";
             case "CritRate":
-                return "Tăng tỉ lệ chí mạng thêm 5 phần trăm";
+                return "Tăng tỉ lệ chí mạng thêm 10 phần trăm";
             case "CritDamage":
                 return "Tăng sát thương chí mạng thêm 50 phần trăm.";
             case "fireReset":
-                return "Tăng tốc độ bắn thêm 10 phần trăm.";
+                return "Tăng tốc độ bắn thêm 20 phần trăm.";
             case "MaxBulletCount":
                 return "Tăng thêm 10 viên đạn mỗi băng.";
             case "fireRate":
-                return "Tăng liên xạ thêm 1, giảm 30 phần trăm damage";
+                return "Tăng liên xạ thêm 1, giảm 40 phần trăm sát thương";
             case "reloadSpeed":
-                    return "Tăng tốc độ nạp đạn 10 phần trăm";
+                    return "Tăng tốc độ nạp đạn 20 phần trăm";
             default:
                 return "";
         }
@@ -152,19 +152,19 @@ public class levelManager : MonoBehaviour
                 playerManager.IncreaseHP(20);
                 break;
             case "Damage":
-                playerManager.IncreaseDamage(playerManager.damage * 0.1f);
+                playerManager.IncreaseDamage(playerManager.damage * 0.2f);
                 break;
             case "Speed":
-                playerManager.IncreaseSpeed(playerManager.speed * 0.05f);
+                playerManager.IncreaseSpeed(playerManager.speed * 0.1f);
                 break;
             case "CritRate":
-                playerManager.IncreaseCritRate(0.05f);
+                playerManager.IncreaseCritRate(0.1f);
                 break;
             case "CritDamage":
                 playerManager.IncreaseCritDamage(0.5f);
                 break;
             case "fireReset":
-                playerManager.IncreaseFireReset(playerManager.fireReset * 0.1f);
+                playerManager.IncreaseFireReset(playerManager.fireReset * 0.2f);
                 break;
             case "fireRate":
                 playerManager.IncreaseFireRate(1);
@@ -173,7 +173,7 @@ public class levelManager : MonoBehaviour
                 playerManager.IncreaseMaxBulletCount(10);
                 break;
             case "reloadSpeed":
-                playerManager.IncreaseReloadSpeed(playerManager.reloadSpeed*0.1f);
+                playerManager.IncreaseReloadSpeed(playerManager.reloadSpeed*0.2f);
                 break;
             default:
                 break;
