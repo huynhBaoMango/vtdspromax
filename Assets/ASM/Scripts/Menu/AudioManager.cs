@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -26,7 +27,10 @@ public class AudioManager : MonoBehaviour {
 			s.source.pitch = s.pitch;
 			s.source.loop = s.loop;
 		}
-	}
+
+        Sound s1 = Array.Find(sounds, item => item.name == "theme1");
+        s1.source.Play();
+    }
 
 	public void Play (string sound)
 	{
@@ -48,7 +52,7 @@ public class AudioManager : MonoBehaviour {
 	{
 
 		Sound s = Array.Find(sounds, item => item.name == sound);
-		s.source.Stop();
+		s.source.Stop(); 
 	}
 
 }

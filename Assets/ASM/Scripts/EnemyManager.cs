@@ -39,6 +39,7 @@ public class EnemyManager : MonoBehaviour
     void Die()
     {
         emove.isDead();
+        FindAnyObjectByType<AudioManager>().Play("enemydead");
         gameObject.GetComponent<Collider>().enabled = false;
         levelManager player = FindObjectOfType<levelManager>();
         if (player != null && !isDie)
@@ -49,4 +50,14 @@ public class EnemyManager : MonoBehaviour
         animationsController.SetDead();
         Destroy(gameObject, 2f);
     }
+
+    public void DieByWave()
+    {
+        emove.isDead();
+        FindAnyObjectByType<AudioManager>().Play("enemydead");
+        gameObject.GetComponent<Collider>().enabled = false;
+        animationsController.SetDead();
+        Destroy(gameObject, 2f);
+    }
 }
+

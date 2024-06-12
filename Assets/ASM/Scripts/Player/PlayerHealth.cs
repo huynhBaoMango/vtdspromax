@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public Image bloodright;
     public float blinkDuration = 1f; // Thời gian chóp chóp
     public float blinkSpeed = 0.1f; // Tốc độ chóp chóp
+    public GameObject diePanel;
 
     void Start()
     {
@@ -89,20 +90,20 @@ public class PlayerHealth : MonoBehaviour
     {
         pmanager.isDead = true;
         anim.SetTrigger("isdead");
-        
+        FindAnyObjectByType<Spawner>().Stop = true;
         if (PlayerPrefs.GetInt("highScore") != null)
         {
             int oldScore = PlayerPrefs.GetInt("highScore");
-            if (oldScore < GameObject.Find("SPAWNER").GetComponent<Spawner>().wave)
+            if (oldScore < GameObject.Find("SPAWNER").GetComponent<Spawner>().wave-1)
             {
-                PlayerPrefs.SetInt("highScore", GameObject.Find("SPAWNER").GetComponent<Spawner>().wave);
+                PlayerPrefs.SetInt("highScore", GameObject.Find("SPAWNER").GetComponent<Spawner>().wave-1);
             }
         }
         else
         {
-            PlayerPrefs.SetInt("highScore", GetComponent<Spawner>().wave);
+            PlayerPrefs.SetInt("highScore", GetComponent<Spawner>().wave-1);
         }
-
+        StartCoroutine(showDiePanel());
     }
     void HideScreenDamage()
     {
@@ -140,6 +141,27 @@ public class PlayerHealth : MonoBehaviour
             yield return null;
         }
     }
+    IEnumerator FadeIn(Image blood)
+    {
+        float elapsedTime = 0f;
+        Color originalColor = blood.color;
+        while (elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, elapsedTime / 1); // Fade out
+            blood.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+    }
+
+    IEnumerator showDiePanel()
+    {
+        
+        yield return new WaitForSeconds(5);
+        diePanel.SetActive(true);
+    }
+
+
 
 
 }

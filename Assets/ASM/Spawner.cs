@@ -28,6 +28,7 @@ public class Spawner : MonoBehaviour
     public List<Transform> spawnPointList;
     public GameObject warning;
     public Text warningText;
+    public bool Stop;
 
     void Start()
     {
@@ -40,13 +41,15 @@ public class Spawner : MonoBehaviour
         player = GameObject.Find("PLAYER").transform;
         countdownToWave = 60f;
         bossSpawned = false;
+        Stop = false;
 
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemyPrefabs == null)
+        if (enemyPrefabs == null || Stop)
         {
             return;
         }
@@ -72,8 +75,14 @@ public class Spawner : MonoBehaviour
                 wave++;
                 countdownToWave = 60f;
                 bossSpawned = false;
-                FindAnyObjectByType<AudioManager>().PlayButWait("theme1");
+                FindAnyObjectByType<AudioManager>().Play("wavedone");
                 FindAnyObjectByType<AudioManager>().Stop("theme2");
+
+                foreach(Transform enemy in enemies.transform)
+                {
+                    StartCoroutine(killEnemy(enemy));
+                }
+                FindAnyObjectByType<AudioManager>().PlayButWait("theme1");
             }
         }
         if(countdownToWave < 6 && countdownToWave > 1)
@@ -198,5 +207,13 @@ public class Spawner : MonoBehaviour
         enemy.transform.localScale = new Vector3(1, 1, 1);
         emanager.damage = (emanager.damage * 2) + (emanager.damage * wave * 0.1f);
         Instantiate(bossEffect, enemy.transform);
+    }
+
+    IEnumerator killEnemy(Transform enemy)
+    {
+        yield return new WaitForSeconds(0.3f);
+        GameObject enemy1 = enemy.gameObject;
+        enemy1.GetComponent<EnemyManager>().DieByWave();
+        
     }
 }
