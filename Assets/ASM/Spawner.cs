@@ -77,6 +77,11 @@ public class Spawner : MonoBehaviour
                 bossSpawned = false;
                 FindAnyObjectByType<AudioManager>().PlayButWait("theme1");
                 FindAnyObjectByType<AudioManager>().Stop("theme2");
+
+                foreach(Transform enemy in enemies.transform)
+                {
+                    StartCoroutine(killEnemy(enemy));
+                }
             }
         }
         if(countdownToWave < 6 && countdownToWave > 1)
@@ -201,5 +206,12 @@ public class Spawner : MonoBehaviour
         enemy.transform.localScale = new Vector3(1, 1, 1);
         emanager.damage = (emanager.damage * 2) + (emanager.damage * wave * 0.1f);
         Instantiate(bossEffect, enemy.transform);
+    }
+
+    IEnumerator killEnemy(Transform enemy)
+    {
+        GameObject enemy1 = enemy.gameObject;
+        enemy1.GetComponent<EnemyManager>().DieByWave();
+        yield return new WaitForSeconds(0.15f);
     }
 }
