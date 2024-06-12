@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
 
     private bool bossSpawned;
     public Slider waveBar;
-    public TMP_Text waveText;
+    public Text waveText;
     public List<Transform> spawnPointList;
     public GameObject warning;
     public Text warningText;
@@ -60,6 +60,8 @@ public class Spawner : MonoBehaviour
         else
         {
             warning.SetActive(false);
+            FindAnyObjectByType<AudioManager>().Stop("warning");
+            FindAnyObjectByType<AudioManager>().Stop("theme1");
             waveSpawn();
         }
 
@@ -70,12 +72,17 @@ public class Spawner : MonoBehaviour
                 wave++;
                 countdownToWave = 60f;
                 bossSpawned = false;
+                FindAnyObjectByType<AudioManager>().PlayButWait("theme1");
+                FindAnyObjectByType<AudioManager>().Stop("theme2");
             }
         }
-        if(countdownToWave < 6)
+        if(countdownToWave < 6 && countdownToWave > 1)
         {
             warning.SetActive(true);
             warningText.text = "WAVE " + wave + " INCOMING";
+            FindAnyObjectByType<AudioManager>().Stop("theme1");
+            FindAnyObjectByType<AudioManager>().PlayButWait("warning");
+            FindAnyObjectByType<AudioManager>().PlayButWait("theme2");
         }
     }
 
@@ -93,7 +100,7 @@ public class Spawner : MonoBehaviour
 
     void waveSpawn()
     {
-        waveText.text = "WAVE" + wave;
+        waveText.text = "WAVE " + wave;
         timeToNextSpawn -= 1 * Time.deltaTime;
         if (enemies.transform.childCount <= 100 && timeToNextSpawn <= 0)
         {
@@ -183,7 +190,6 @@ public class Spawner : MonoBehaviour
     }
     private void setEnemyDetailBoss(GameObject enemy)
     {
-        Debug.Log("aaaa");
         EnemyManager emanager = enemy.GetComponent<EnemyManager>();
         enemy.transform.parent = bosses.transform;
         emanager.maxHP = (emanager.maxHP * 3) + (emanager.maxHP * wave * 0.1f);

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float attackRange = 3f;
     private AnimationsController animationsController;
     private GameObject player;
     private EnemyManager emanager;
@@ -19,7 +18,7 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Vector3.Distance(transform.position, player.transform.position) < attackRange)
+       if(Vector3.Distance(transform.position, player.transform.position) < emanager.attackRange)
        {
             animationsController.Attack();
        }
@@ -27,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void AttackOnPlayer()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
+        if (Vector3.Distance(transform.position, player.transform.position) < emanager.attackRange)
         {
             player.GetComponent<PlayerHealth>().TakeDamage(emanager.damage);
         }

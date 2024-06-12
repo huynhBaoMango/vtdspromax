@@ -76,4 +76,9 @@ public class BlinkingUI : MonoBehaviour
         // Đảm bảo tất cả các phần tử trở về trạng thái ban đầu
         SetAlpha(1f);
     }
+    private void OnEnable()
+    {
+        childGraphics = GetComponentsInChildren<Graphic>();
+        StartBlink();
+    }
 }
