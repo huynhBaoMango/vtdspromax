@@ -12,7 +12,7 @@ public class levelManager : MonoBehaviour
     private int level = 1;
     public Slider xpSlider;
     public int maxXP = 1000;
-    public TMP_Text levelText;
+    public Text levelText;
     public GameObject levelUpPanel;
 
     public TMP_Text[] buffNameTMPs = new TMP_Text[3];

@@ -53,23 +53,26 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(BlinkScreenDamage());
         currentHealth -= damage;
         healthSlider.value = currentHealth; // Cập nhật thanh máu
-        if(currentHealth > 0) {
-        bloodtop.enabled=true;
-        bloodbot.enabled=true;
-        bloodleft.enabled=true;
-        bloodright.enabled=true;
-        Invoke("HideScreenDamage", 0.5f);
+        if (currentHealth > 0)
+        {
+            bloodtop.enabled = true;
+            bloodbot.enabled = true;
+            bloodleft.enabled = true;
+            bloodright.enabled = true;
+            StartCoroutine(FadeOut(bloodtop));
+            StartCoroutine(FadeOut(bloodbot));
+            StartCoroutine(FadeOut(bloodleft));
+            StartCoroutine(FadeOut(bloodright));
+            Invoke("HideScreenDamage", 0.5f);
             FindAnyObjectByType<AudioManager>().Play("Hurt");
             FindAnyObjectByType<AudioManager>().Play("Hurt1");
         }
-        
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             if (!pmanager.isDead) { FindAnyObjectByType<AudioManager>().PlayButWait("Dead"); }
             Die();
-            
-            
         }
     }
 
@@ -119,10 +122,23 @@ public class PlayerHealth : MonoBehaviour
             bloodright.enabled = !bloodright.enabled; // Đảo trạng thái hiển thị của Image
             yield return new WaitForSeconds(blinkSpeed); // Đợi một khoảng thời gian trước khi chóp tiếp
         }
-         bloodtop.enabled  = false; 
+        bloodtop.enabled = false;
         bloodbot.enabled = false;
-           bloodleft.enabled =false;
-            bloodright.enabled =false;// Đảm bảo Image được tắt sau khi chóp xong
+        bloodleft.enabled = false;
+        bloodright.enabled = false; // Đảm bảo Image được tắt sau khi chóp xong
+    }
+
+    IEnumerator FadeOut(Image blood)
+    {
+        float elapsedTime = 0f;
+        Color originalColor = blood.color;
+        while (elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / 1); // Fade out
+            blood.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
     }
 
 
