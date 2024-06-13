@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dashSkill : MonoBehaviour
+[CreateAssetMenu]
+public class dashSkill : Skill
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float dashVelocity;
 
-    // Update is called once per frame
-    void Update()
+    public override void Active(GameObject parent)
     {
-        
+        base.Active();
     }
 }
