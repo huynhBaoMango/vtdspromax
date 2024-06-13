@@ -1309,9 +1309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839117fef398c0e46b03fbcba744cd62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 50
+  maxHP: 10
   experiencePoints: 70
-  damage: 7
+  damage: 5
   speed: 6
   attackRange: 3
   currentHP: 0
@@ -1405,7 +1405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3f47627a8d6844ba2e643219b2060d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 3
 --- !u!114 &2315875397006933333
 MonoBehaviour:
   m_ObjectHideFlags: 0

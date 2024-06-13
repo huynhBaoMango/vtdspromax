@@ -10,6 +10,7 @@ public class levelManager : MonoBehaviour
 
     private int experience = 0;
     private int level = 1;
+    private int pendingLevelUps = 0; // Thêm biến này
     public Slider xpSlider;
     public int maxXP = 1000;
     public Text levelText;
@@ -22,7 +23,6 @@ public class levelManager : MonoBehaviour
     private List<string> buffNames = new List<string> { "HP", "Damage", "Speed", "CritRate", "CritDamage", "fireReset", "fireRate", "maxBulletCount", "reloadSpeed" };
     private string selectedAttribute;
 
-
     void Start()
     {
         playerManager = GetComponent<PlayerManager>();
@@ -30,6 +30,11 @@ public class levelManager : MonoBehaviour
         xpSlider.value = experience;
         UpdateLevelText();
         levelUpPanel.SetActive(false);
+    }
+
+    void Update()
+    {
+        CheckLevelUp();
     }
 
     public void GainExperience(int amount)
@@ -43,29 +48,30 @@ public class levelManager : MonoBehaviour
     // Kiểm tra và tăng cấp nếu đủ XP
     void CheckLevelUp()
     {
-        if (experience >= maxXP)
+        while (experience >= maxXP)
         {
             experience -= maxXP;
             xpSlider.value = experience;
+            pendingLevelUps++; // Tăng số lần lên cấp đang chờ
             LevelUp();
-            
         }
     }
 
     // Hàm xử lý việc tăng cấp
     void LevelUp()
     {
-        playerManager.IncreaseCurrentHP(playerManager.maxHP/4);
+        playerManager.IncreaseCurrentHP(playerManager.maxHP / 4);
         level++;
         maxXP = level * 100;
         xpSlider.maxValue = maxXP;
         UpdateLevelText(); // Cập nhật hiển thị cấp độ
-        // Hiển thị Panel lựa chọn chỉ số
-        levelUpPanel.SetActive(true);
-        // Tạm dừng game
-        Time.timeScale = 0f;
-        // Khởi tạo các lựa chọn buff ngẫu nhiên
-        InitializeLevelUpChoices();
+        // Hiển thị Panel lựa chọn chỉ số nếu chưa hiển thị
+        if (!levelUpPanel.activeSelf)
+        {
+            levelUpPanel.SetActive(true);
+            Time.timeScale = 0f; // Tạm dừng game
+            InitializeLevelUpChoices(); // Khởi tạo các lựa chọn buff ngẫu nhiên
+        }
     }
 
     // Cập nhật hiển thị cấp độ
@@ -115,9 +121,9 @@ public class levelManager : MonoBehaviour
         switch (buffName)
         {
             case "HP":
-                return "Tăng máu thêm 20.";
+                return "Tăng máu tối đa thêm 20.";
             case "Damage":
-                return "Tăng Damage thêm 20 phần trăm.";
+                return "Tăng Damage thêm 10 phần trăm.";
             case "Speed":
                 return "Tăng tốc độ di chuyển thêm 10 phần trăm.";
             case "CritRate":
@@ -131,7 +137,7 @@ public class levelManager : MonoBehaviour
             case "fireRate":
                 return "Tăng liên xạ thêm 1, giảm 40 phần trăm sát thương";
             case "reloadSpeed":
-                    return "Tăng tốc độ nạp đạn 20 phần trăm";
+                return "Tăng tốc độ nạp đạn 20 phần trăm";
             default:
                 return "";
         }
@@ -152,7 +158,7 @@ public class levelManager : MonoBehaviour
                 playerManager.IncreaseHP(20);
                 break;
             case "Damage":
-                playerManager.IncreaseDamage(playerManager.damage * 0.2f);
+                playerManager.IncreaseDamage(playerManager.damage * 0.1f);
                 break;
             case "Speed":
                 playerManager.IncreaseSpeed(playerManager.speed * 0.1f);
@@ -173,7 +179,7 @@ public class levelManager : MonoBehaviour
                 playerManager.IncreaseMaxBulletCount(10);
                 break;
             case "reloadSpeed":
-                playerManager.IncreaseReloadSpeed(playerManager.reloadSpeed*0.2f);
+                playerManager.IncreaseReloadSpeed(playerManager.reloadSpeed * 0.2f);
                 break;
             default:
                 break;
@@ -181,11 +187,21 @@ public class levelManager : MonoBehaviour
         // Tăng số lần buff được chọn
         playerManager.BuffSelected(selectedAttribute);
 
-        // Ẩn Panel và tiếp tục game
-        levelUpPanel.SetActive(false);
-        Time.timeScale = 1f;
-        Debug.Log("Attribute increased: " + selectedAttribute);
-        StartCoroutine(HideBuffTextAfterDelay(3f)); // Ẩn buffText sau 3 giây
+        pendingLevelUps--; // Giảm số lần lên cấp đang chờ
+
+        if (pendingLevelUps > 0)
+        {
+            // Khởi tạo lại các lựa chọn buff ngẫu nhiên nếu còn lần lên cấp chưa chọn
+            InitializeLevelUpChoices();
+        }
+        else
+        {
+            // Ẩn Panel và tiếp tục game nếu đã chọn hết các lần lên cấp
+            levelUpPanel.SetActive(false);
+            Time.timeScale = 1f;
+            Debug.Log("Attribute increased: " + selectedAttribute);
+            StartCoroutine(HideBuffTextAfterDelay(3f)); // Ẩn buffText sau 3 giây
+        }
     }
 
     IEnumerator HideBuffTextAfterDelay(float delay)
@@ -197,7 +213,6 @@ public class levelManager : MonoBehaviour
     {
         GainExperience(enemy.experiencePoints);
     }
-
 
     float CalculateDamage()
     {

@@ -77,6 +77,11 @@ public class Shooting : MonoBehaviour
         if (pmanager.currentBulletCount == 0)
         {
             Reload();
+            FindAnyObjectByType<AudioManager>().PlayButWait("reload");
+        }
+        else
+        {
+            FindAnyObjectByType<AudioManager>().Stop("reload");
         }
 
 

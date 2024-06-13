@@ -31,7 +31,7 @@ public class playerMove : MonoBehaviour
         if (!pmanager.isDead)
         {
             speed = pmanager.speed;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            /*Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
@@ -39,8 +39,23 @@ public class playerMove : MonoBehaviour
             }
             Vector3 lookDir = lookPos - transform.position;
             lookDir.y = 0;
-            transform.LookAt(transform.position + lookDir, Vector3.up);
+            transform.LookAt(transform.position + lookDir, Vector3.up); */
+            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            float rayDistance;
 
+            if (groundPlane.Raycast(ray, out rayDistance))
+            {
+                lookPos = ray.GetPoint(rayDistance);
+                Vector3 lookDir = lookPos - transform.position;
+                lookDir.y = 0; // Đảm bảo hướng Y bằng 0
+
+                if (lookDir != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(lookDir);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+                }
+            }
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 tabMenu.SetActive(true);

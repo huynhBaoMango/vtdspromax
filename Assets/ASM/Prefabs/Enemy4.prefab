@@ -883,8 +883,8 @@ MonoBehaviour:
   maxHP: 200
   experiencePoints: 120
   damage: 30
-  speed: 4
-  attackRange: 3
+  speed: 2.5
+  attackRange: 2
   currentHP: 0
 --- !u!95 &8187015543188906532
 Animator:
@@ -976,7 +976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3f47627a8d6844ba2e643219b2060d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 3
 --- !u!114 &6150025500335048334
 MonoBehaviour:
   m_ObjectHideFlags: 0

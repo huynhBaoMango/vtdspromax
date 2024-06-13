@@ -169,27 +169,20 @@ public class Spawner : MonoBehaviour
 
     void BossSpawn()
     {
-        for (int i = 0; i < maxAttempts; i++)
-        {
             Vector3 randomPosition = GetRandomPosition();
-            if (IsPositionValid(randomPosition))
+            int randomPrefab = Random.Range(0, wave - 1);
+            if (wave - 1 < enemyPrefabs.Count)
             {
-                int randomPrefab = Random.Range(0, wave - 1);
-                if (wave - 1 < enemyPrefabs.Count)
-                {
-                    GameObject enemy = Instantiate(enemyPrefabs[randomPrefab], randomPosition, Quaternion.identity);
-                    enemy.transform.parent = enemies.transform;
-                    setEnemyDetailBoss(enemy);
-                }
-                else
-                {
-                    GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], randomPosition, Quaternion.identity);
-                    enemy.transform.parent = enemies.transform;
-                    setEnemyDetailBoss(enemy);
-                }
-                return;
+                GameObject enemy = Instantiate(enemyPrefabs[randomPrefab], randomPosition, Quaternion.identity);
+                enemy.transform.parent = enemies.transform;
+                setEnemyDetailBoss(enemy);
             }
-        }
+            else
+            {
+                GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], randomPosition, Quaternion.identity);
+                enemy.transform.parent = enemies.transform;
+                setEnemyDetailBoss(enemy);
+            }
     }
 
     private void setEnemyDetail(GameObject enemy)
