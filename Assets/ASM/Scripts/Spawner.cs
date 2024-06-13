@@ -59,6 +59,8 @@ public class Spawner : MonoBehaviour
         {
 
             normalSpawn();
+            FindAnyObjectByType<AudioManager>().PlayButWait("theme1");
+
         }
         else
         {
