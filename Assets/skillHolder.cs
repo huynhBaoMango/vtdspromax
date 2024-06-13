@@ -22,7 +22,35 @@ public class skillHolder : MonoBehaviour
     {
         switch (state)
         {
-
+            case SkillState.ready:
+                if (Input.GetKeyDown(key))
+                {
+                    skill.Active();
+                    state = SkillState.active;
+                    activeTime = skill.activeTime;
+                }
+            break;
+            case SkillState.active:
+                if (activeTime > 0)
+                {
+                    activeTime -= Time.deltaTime;
+                }
+                else
+                {
+                    state = SkillState.cooldown;
+                    cooldownTime = skill.cooldownTime;
+                }
+                break;
+            case SkillState.cooldown:
+                if (cooldownTime > 0)
+                {
+                    cooldownTime -= Time.deltaTime;
+                }
+                else
+                {
+                    state = SkillState.ready;
+                }
+                break;
         }
     }
 }
