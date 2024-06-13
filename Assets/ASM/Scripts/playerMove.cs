@@ -17,6 +17,7 @@ public class playerMove : MonoBehaviour
     float forwardAmount;
     float turnAmount;
     public GameObject tabMenu;
+    public Vector3 movement;
 
 
     private void Start()
@@ -100,7 +101,7 @@ public class playerMove : MonoBehaviour
 
             Move(move);
 
-            Vector3 movement = new Vector3(horizontal, 0, vertical).normalized;
+            movement = new Vector3(horizontal, 0, vertical).normalized;
             rb.AddForce(movement * speed / Time.deltaTime);
         }
 
