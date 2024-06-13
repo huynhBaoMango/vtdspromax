@@ -8,6 +8,6 @@ public class Skill : ScriptableObject
     public float cooldownTime;
     public float activeTime;
 
-    public virtual void Active() { }
+    public virtual void Active(GameObject parent) { }
 
 }
