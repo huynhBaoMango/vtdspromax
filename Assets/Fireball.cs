@@ -8,9 +8,9 @@ public class Fireball : MonoBehaviour
         damage = GameObject.FindAnyObjectByType<PlayerManager>().damage * 0.1f;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-                    Debug.Log(damage);
+        Debug.Log(damage);
         if(other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<EnemyManager>().TakeDamage(damage);

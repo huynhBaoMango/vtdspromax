@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [CreateAssetMenu(menuName = "Skills/CircleFireballSkill")]
 public class CircleFireballSkill : Skill
@@ -8,7 +7,7 @@ public class CircleFireballSkill : Skill
 
     public override void Active(GameObject parent)
     {
-        GameObject fireballs = Instantiate(circlePrefab, parent.transform.position, Quaternion.identity);
+        GameObject fireballs = Instantiate(circlePrefab, new Vector3(parent.transform.position.x, 2, parent.transform.position.z), Quaternion.identity);
         Destroy(fireballs, activeTime);
         
     }
