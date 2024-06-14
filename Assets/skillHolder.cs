@@ -1,56 +1,60 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class skillHolder : MonoBehaviour
+public class SkillHolder : MonoBehaviour
 {
-    public Skill skill;
-    float cooldownTime;
-    float activeTime;
+    public List<Skill> skills = new List<Skill>(); // Danh sách các kỹ năng
+    List<float> cooldownTimes = new List<float>(); // Danh sách thời gian cooldown của từng kỹ năng
+    List<float> activeTimes = new List<float>(); // Danh sách thời gian hoạt động của từng kỹ năng
+    List<SkillState> states = new List<SkillState>(); // Danh sách trạng thái của từng kỹ năng
+    public List<KeyCode> keys = new List<KeyCode>(); // Danh sách keycodes tương ứng với từng kỹ năng
 
     enum SkillState
     {
-        ready,
-        active,
-        cooldown
+        Ready,
+        Active,
     }
-    SkillState state = SkillState.ready;
-    public KeyCode key;
 
+    void Start()
+    {
+        // Khởi tạo danh sách thời gian cooldown và active ban đầu
+        foreach (Skill skill in skills)
+        {
+            cooldownTimes.Add(0f);
+            activeTimes.Add(0f);
+            states.Add(SkillState.Ready);
+        }
+    }
 
     void Update()
     {
-        switch (state)
+        for (int i = 0; i < skills.Count; i++)
         {
-            case SkillState.ready:
-                if (Input.GetKeyDown(key))
-                {
-                    //skill.Active(GameObject);
-                    state = SkillState.active;
-                    activeTime = skill.activeTime;
-                }
-            break;
-            case SkillState.active:
-                if (activeTime > 0)
-                {
-                    activeTime -= Time.deltaTime;
-                }
-                else
-                {
-                    state = SkillState.cooldown;
-                    cooldownTime = skill.cooldownTime;
-                }
-                break;
-            case SkillState.cooldown:
-                if (cooldownTime > 0)
-                {
-                    cooldownTime -= Time.deltaTime;
-                }
-                else
-                {
-                    state = SkillState.ready;
-                }
-                break;
+            switch (states[i])
+            {
+                case SkillState.Ready:
+                    if (Input.GetKeyDown(keys[i]) && cooldownTimes[i] <= 0)
+                    {
+                        skills[i].Active(gameObject);
+                        states[i] = SkillState.Active;
+                        activeTimes[i] = skills[i].activeTime;
+                    }
+                    break;
+                case SkillState.Active:
+                    if (activeTimes[i] > 0)
+                    {
+                        activeTimes[i] -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        skills.RemoveAt(i);
+                        activeTimes.RemoveAt(i);
+                        states.RemoveAt(i);
+                        keys.RemoveAt(i);
+                    }
+                    break;
+            }
         }
     }
 }

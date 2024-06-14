@@ -5,10 +5,11 @@ using System.Collections;
 public class CircleFireballSkill : Skill
 {
     public GameObject circlePrefab; // Prefab của cục lửa
-    public int fireballCount; // Số lượng cục lửa bay vòng quanh
 
     public override void Active(GameObject parent)
     {
-        GameObject fireball = Instantiate(circlePrefab, parent.transform.position, Quaternion.identity);
+        GameObject fireballs = Instantiate(circlePrefab, parent.transform.position, Quaternion.identity);
+        Destroy(fireballs, activeTime);
+        
     }
 }

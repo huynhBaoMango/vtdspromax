@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: New Circle Skill
   m_EditorClassIdentifier: 
   name: fa
-  cooldownTime: 5
+  cooldownTime: 7
   activeTime: 3
-  circlePrefab: {fileID: 0}
-  fireballCount: 3
+  circlePrefab: {fileID: 5825961384149887610, guid: dd337e93d9a0fc349be453732dede5d3, type: 3}
