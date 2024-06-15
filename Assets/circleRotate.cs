@@ -14,6 +14,6 @@ public class circleRotate : MonoBehaviour
     void Update()
     {
         transform.Rotate(speed * Vector3.down * Time.deltaTime);
-        transform.position = GameObject.Find("PLAYER").transform.position;
+        transform.position = new Vector3(GameObject.Find("PLAYER").transform.position.x, 2, GameObject.Find("PLAYER").transform.position.z);
     }
 }
