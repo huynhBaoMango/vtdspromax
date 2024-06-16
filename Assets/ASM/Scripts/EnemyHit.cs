@@ -8,6 +8,7 @@ public class EnemyHit : MonoBehaviour
 
     void Start()
     {
+        
         emanager = GetComponent<EnemyManager>();
     }
 

@@ -8,6 +8,8 @@ TagManager:
   - FX
   - bullet
   - BOSS
+  - GAMEUI
+  - sirc
   layers:
   - Default
   - TransparentFX

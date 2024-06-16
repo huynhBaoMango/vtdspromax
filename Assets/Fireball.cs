@@ -2,19 +2,26 @@
 
 public class Fireball : MonoBehaviour
 {
-    float damage;
+     float damage = 0f;
+
     void Start()
     {
-        damage = GameObject.FindAnyObjectByType<PlayerManager>().damage * 0.1f;
-    }
+        PlayerManager player = FindObjectOfType<PlayerManager>();
+        if (player != null)
+        {
+            damage = player.damage * 0.1f;
+        }
 
+    }
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(damage);
-        if(other.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<EnemyManager>().TakeDamage(damage);
-
+            EnemyManager enemy = other.GetComponent<EnemyManager>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
         }
     }
 }
