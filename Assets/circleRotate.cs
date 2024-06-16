@@ -14,8 +14,8 @@ public class circleRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(speed * Vector3.down * Time.deltaTime);
-        transform.position = new Vector3(GameObject.Find("PLAYER").transform.position.x, 2, GameObject.Find("PLAYER").transform.position.z);
+       transform.Rotate(speed * Vector3.down * Time.deltaTime);
+    transform.position = new Vector3(GameObject.Find("PLAYER").transform.position.x, 2, GameObject.Find("PLAYER").transform.position.z);
     }
     
 }
