@@ -6,41 +6,28 @@ public class DamageZone : MonoBehaviour
 {
     public float duration = 5f;
     public float damagePerSecond = 10f;
-    private HashSet<GameObject> playersInZone = new HashSet<GameObject>();
+    private float delayDamage;
+    public float damage;
 
     void Start()
     {
-        StartCoroutine(DestroyAfterDuration());
+        delayDamage = 0;
+        Destroy(gameObject, 5f);
     }
 
-    IEnumerator DestroyAfterDuration()
-    {
-        yield return new WaitForSeconds(duration);
-        Destroy(gameObject);
-    }
 
-    void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playersInZone.Add(other.gameObject);
+            delayDamage -= Time.deltaTime;
+            if(delayDamage <= 0)
+            {
+                other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                delayDamage = 1f;
+            }
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            playersInZone.Remove(other.gameObject);
-        }
-    }
-
-    void Update()
-    {
-        foreach (GameObject player in playersInZone)
-        {
-            // Gây sát thương cho người chơi
-            player.GetComponent<PlayerHealth>().TakeDamage(damagePerSecond * Time.deltaTime);
-        }
-    }
 }
