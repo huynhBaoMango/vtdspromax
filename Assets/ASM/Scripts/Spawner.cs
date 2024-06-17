@@ -211,4 +211,22 @@ public class Spawner : MonoBehaviour
         enemy1.GetComponent<EnemyManager>().DieByWave();
         
     }
+
+    public void WaveUp()
+    {
+        wave++;
+    }
+
+    public void GoToWave()
+    {
+        countdownToWave = 8;
+    }
+
+    public void KillAllBosses()
+    {
+        foreach (Transform enemy in bosses.transform)
+        {
+            StartCoroutine(killEnemy(enemy));
+        }
+    }
 }
