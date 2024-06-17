@@ -2,7 +2,7 @@
 
 public class Fireball : MonoBehaviour
 {
-     float damage = 0f;
+    public float damage = 0f;
 
     void Start()
     {

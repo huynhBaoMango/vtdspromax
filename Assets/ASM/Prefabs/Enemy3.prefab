@@ -1315,6 +1315,11 @@ MonoBehaviour:
   speed: 6
   attackRange: 3
   currentHP: 0
+  dropRate: 0.5
+  skillIconPrefabs:
+  - {fileID: 6607644311698433153, guid: 1b091d35cf669f5409d92ea95c3b2fb2, type: 3}
+  - {fileID: 5592301970021373799, guid: 0fa24d286e665854eada3a7875858261, type: 3}
+  playerTransform: {fileID: 0}
 --- !u!95 &7978624207803025015
 Animator:
   serializedVersion: 5
