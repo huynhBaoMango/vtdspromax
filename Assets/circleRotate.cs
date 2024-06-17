@@ -11,7 +11,7 @@ public class circleRotate : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
        transform.Rotate(speed * Vector3.down * Time.deltaTime);

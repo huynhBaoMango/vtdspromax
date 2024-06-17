@@ -14,11 +14,11 @@ public class EnemyManager : MonoBehaviour
     private enemyMove emove; 
     private bool isDie; 
     public float dropRate = 0.5f;
-    private SkillUIManager skillUIManager; // Quản lý UI kỹ năng
-    private SkillHolder playerSkillHolder; // Quản lý kỹ năng của người chơi
+    private SkillUIManager skillUIManager; 
+    private SkillHolder playerSkillHolder; 
 
-    public GameObject[] skillIconPrefabs; // Mảng prefab của icon kỹ năng
-    public Transform playerTransform; // Transform của người chơi
+    public GameObject[] skillIconPrefabs; 
+    public Transform playerTransform; 
 
     void Start()
     {
@@ -69,7 +69,7 @@ public class EnemyManager : MonoBehaviour
         {
             int skillIndex = Random.Range(0, playerSkillHolder.skills.Count);
 
-            // Kiểm tra nếu người chơi đã nhặt kỹ năng này rồi thì không rơi ra nữa
+           
             if (!playerSkillHolder.skillReady[skillIndex])
             {
                 playerSkillHolder.ActivateSkill(skillIndex);
@@ -78,7 +78,7 @@ public class EnemyManager : MonoBehaviour
                 {
                     GameObject skillIconPrefab = skillIconPrefabs[skillIndex];
 
-                    // Tìm và instantiate dưới Canvas GAMEUI (nếu không tìm thấy thì không làm gì)
+                   
                     GameObject gameUI = GameObject.Find("GAMEUI");
                     if (gameUI != null)
                     {
@@ -102,27 +102,27 @@ public class EnemyManager : MonoBehaviour
 }
     IEnumerator MoveSkillIconToPlayer(GameObject skillIcon)
 {
-    float duration = 1.2f; // Thời gian di chuyển
+    float duration = 1.2f; 
     Vector3 startPosition = skillIcon.transform.position;
     float elapsed = 0;
 
     while (elapsed < duration)
     {
-        // Cập nhật vị trí hiện tại của người chơi
+        
         Vector3 endPosition = playerTransform.position;
 
         skillIcon.transform.position = Vector3.Lerp(startPosition, endPosition, elapsed / duration);
         elapsed += Time.deltaTime;
 
-        // Debug vị trí để kiểm tra xem icon đang di chuyển đúng
+        
         Debug.Log("Skill icon position: " + skillIcon.transform.position);
 
         yield return null;
     }
 
-    // Đảm bảo vị trí cuối cùng là vị trí của người chơi
+    
     skillIcon.transform.position = playerTransform.position;
-    Destroy(skillIcon); // Hủy icon kỹ năng sau khi tới người chơi
+    Destroy(skillIcon);
 }
 
     public void DieByWave()
