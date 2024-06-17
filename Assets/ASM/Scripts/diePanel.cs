@@ -21,7 +21,7 @@ public class diePanel : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Space))
         {
             SceneManager.LoadScene("Start");
         }
