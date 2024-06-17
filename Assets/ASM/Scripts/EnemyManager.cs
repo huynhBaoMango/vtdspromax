@@ -50,7 +50,7 @@ public class EnemyManager : MonoBehaviour
         emove.isDead(); 
         FindAnyObjectByType<AudioManager>().Play("enemydead");
         gameObject.GetComponent<Collider>().enabled = false; 
-        levelManager player = FindObjectOfType<levelManager>();
+        levelManager player = FindAnyObjectByType<levelManager>();
         if (player != null && !isDie)
         {
             player.EnemyDefeated(this); 
@@ -68,24 +68,29 @@ public class EnemyManager : MonoBehaviour
         if (Random.value <= dropRate)
         {
             int skillIndex = Random.Range(0, playerSkillHolder.skills.Count);
-            playerSkillHolder.ActivateSkill(skillIndex);
 
-            if (skillIndex < skillIconPrefabs.Length && skillIndex >= 0)
+            // Kiểm tra nếu người chơi đã nhặt kỹ năng này rồi thì không rơi ra nữa
+            if (!playerSkillHolder.skillReady[skillIndex])
             {
-                GameObject skillIconPrefab = skillIconPrefabs[skillIndex];
+                playerSkillHolder.ActivateSkill(skillIndex);
 
-                // Tìm và instantiate dưới Canvas GAMEUI (nếu không tìm thấy thì không làm gì)
-                GameObject gameUI = GameObject.Find("GAMEUI");
-                if (gameUI != null)
+                if (skillIndex < skillIconPrefabs.Length && skillIndex >= 0)
                 {
-                Vector3 spawnPosition = transform.position;
-                   GameObject skillIcon = Instantiate(skillIconPrefab, spawnPosition, Quaternion.Euler(90, 0, 0), gameUI.transform);
+                    GameObject skillIconPrefab = skillIconPrefabs[skillIndex];
 
-                    StartCoroutine(MoveSkillIconToPlayer(skillIcon));
-                }
-                else
-                {
-                    Debug.LogWarning("GAMEUI not found. Skill icon not dropped.");
+                    // Tìm và instantiate dưới Canvas GAMEUI (nếu không tìm thấy thì không làm gì)
+                    GameObject gameUI = GameObject.Find("GAMEUI");
+                    if (gameUI != null)
+                    {
+                        Vector3 spawnPosition = transform.position;
+                        GameObject skillIcon = Instantiate(skillIconPrefab, spawnPosition, Quaternion.Euler(90, 0, 0), gameUI.transform);
+
+                        StartCoroutine(MoveSkillIconToPlayer(skillIcon));
+                    }
+                    else
+                    {
+                        Debug.LogWarning("GAMEUI not found. Skill icon not dropped.");
+                    }
                 }
             }
         }
@@ -96,22 +101,29 @@ public class EnemyManager : MonoBehaviour
     }
 }
     IEnumerator MoveSkillIconToPlayer(GameObject skillIcon)
+{
+    float duration = 1.2f; // Thời gian di chuyển
+    Vector3 startPosition = skillIcon.transform.position;
+    float elapsed = 0;
+
+    while (elapsed < duration)
     {
-        float duration = 1.0f; // Thời gian di chuyển
-        Vector3 startPosition = skillIcon.transform.position;
+        // Cập nhật vị trí hiện tại của người chơi
         Vector3 endPosition = playerTransform.position;
-        float elapsed = 0;
 
-        while (elapsed < duration)
-        {
-            skillIcon.transform.position = Vector3.Lerp(startPosition, endPosition, elapsed / duration);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
+        skillIcon.transform.position = Vector3.Lerp(startPosition, endPosition, elapsed / duration);
+        elapsed += Time.deltaTime;
 
-        skillIcon.transform.position = endPosition; // Đảm bảo vị trí cuối cùng là vị trí của người chơi
-        Destroy(skillIcon); // Hủy icon kỹ năng sau khi tới người chơi
+        // Debug vị trí để kiểm tra xem icon đang di chuyển đúng
+        Debug.Log("Skill icon position: " + skillIcon.transform.position);
+
+        yield return null;
     }
+
+    // Đảm bảo vị trí cuối cùng là vị trí của người chơi
+    skillIcon.transform.position = playerTransform.position;
+    Destroy(skillIcon); // Hủy icon kỹ năng sau khi tới người chơi
+}
 
     public void DieByWave()
     {
