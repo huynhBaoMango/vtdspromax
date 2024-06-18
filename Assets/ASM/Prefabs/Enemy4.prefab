@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8043866490348652624}
   - component: {fileID: 7833276362407201309}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: minimapenemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
