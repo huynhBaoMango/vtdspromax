@@ -15,10 +15,12 @@ public class CreditController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // Ẩn hình ảnh
-            creditImage.SetActive(false);
             
-            prefabToHide.SetActive(true);
+            ToggleCreditVisibility();
+        }
+        if(Input.GetMouseButtonDown(0))
+        {
+            ToggleCreditVisibility();
         }
     }
 

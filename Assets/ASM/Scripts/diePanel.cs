@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class diePanel : MonoBehaviour
 {
     public Text endgameText;
+    public static bool isDiePanelActive = false;
     void Start()
     {
         FindAnyObjectByType<AudioManager>().Stop("theme1");
@@ -17,12 +18,14 @@ public class diePanel : MonoBehaviour
         FindAnyObjectByType<AudioManager>().Play("end");
         int wave = FindAnyObjectByType<Spawner>().wave-1;
         endgameText.text = "You survived " + wave + " waves.";
+        isDiePanelActive = true;
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            isDiePanelActive = false;
             SceneManager.LoadScene("Start");
         }
     }

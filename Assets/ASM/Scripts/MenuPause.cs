@@ -28,9 +28,13 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !diePanel.isDiePanelActive)
         {
-            if (isPaused)
+            if (optionMenuPanel.activeSelf)
+            {
+                ShowPauseMenu(); // Quay lại menu tạm dừng nếu đang ở menu tùy chọn
+            }
+            else if (isPaused)
             {
                 ResumeGame();
             }
@@ -51,6 +55,7 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenuPanel.SetActive(false);
+        optionMenuPanel.SetActive(false); // Ẩn panel tùy chọn khi tiếp tục trò chơi
         Time.timeScale = 1f; // Tiếp tục trò chơi
         isPaused = false;
     }
@@ -58,7 +63,7 @@ public class PauseMenu : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f; // Đảm bảo time scale được đặt lại
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Tải lại scene hiện tại
+        SceneManager.LoadScene("Start"); 
     }
 
     public void QuitGame()
