@@ -9,7 +9,7 @@ public class Fireball : MonoBehaviour
         PlayerManager player = FindObjectOfType<PlayerManager>();
         if (player != null)
         {
-            damage = player.damage * 0.1f;
+            damage = player.damage * 0.5f;
         }
 
     }
