@@ -3,11 +3,10 @@ using UnityEngine;
 public class CreditController : MonoBehaviour
 {
     public GameObject creditImage;
-    public GameObject prefabToHide; 
+    public GameObject prefabToHide;
 
     void Start()
     {
-        
         creditImage.SetActive(false);
     }
 
