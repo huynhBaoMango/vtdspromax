@@ -68,9 +68,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        pauseMenuPanel.SetActive(false);
-        Time.timeScale = 1f; // Tiếp tục trò chơi
-        isPaused = false;
+        Application.Quit();
     }
 
     public void ShowOptionMenu()
